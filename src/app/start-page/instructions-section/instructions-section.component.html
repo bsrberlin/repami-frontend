@@ -1,0 +1,31 @@
+<div *ngIf="instructionSection" class="instructions-outer-container">
+    <div class="section">
+        <h2>{{ instructionSection.Titel }}</h2>
+        <div class="textbox-container instruction">
+            {{ instructionSection.Beschreibungstext }}
+        </div>
+        <div class="instruction-card-container">
+          <div class="instruction-card-one">
+            <div class="circle">1</div>
+            <h4>{{ instructionSection.Schritt1Titel }}</h4>
+            <div>
+                {{ instructionSection.Schritt1 }}
+            </div>
+          </div>
+          <div class="instruction-card-two">
+            <div class="circle">2</div>
+            <h4>{{ instructionSection.Schritt2Titel }}</h4>
+            <div>
+                {{ instructionSection.Schritt2 }}
+            </div>
+          </div>
+          <div class="instruction-card-three">
+            <div class="circle">3</div>
+            <h4>{{ instructionSection.Schritt3Titel }}</h4>
+            <div>
+                {{ instructionSection.Schritt3 }}            
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

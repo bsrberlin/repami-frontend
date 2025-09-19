@@ -1,0 +1,189 @@
+@import "../../styles.less";
+
+.register-outer-container {
+  width: 100%;
+}
+#register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 100px 0px;
+
+  .outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    @media only screen and (max-width: @screen-md) {
+      width: 80%;
+    }
+
+    h1 {
+      font-size: 56px;
+      text-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+
+      @media only screen and (max-width: @screen-l) {
+        text-wrap: wrap;
+        font-size: 40px;
+        text-align: center;
+        line-height: 1.4;
+      }
+    }
+
+    p {
+      margin-bottom: 50px;
+      font-size: 20px;
+      @media only screen and (max-width: @screen-l) {
+        font-size: 18px;
+        text-align: center;
+      }
+
+      @media only screen and (max-width: @screen-md) {
+        margin-bottom: 20px;
+      }
+
+      a {
+        color: @orange;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+  ::ng-deep.input-container {
+    display: grid;
+    width: 80%;
+
+    @media only screen and (max-width: @screen-l) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    @media only screen and (max-width: @screen-md) {
+      width: 100%;
+    }
+
+    nz-form-item {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr;
+
+      @media only screen and (max-width: @screen-l) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .label {
+        font-weight: bold;
+        label {
+          font-size: 20px;
+          margin-top: 10px;
+          margin-right: 20px;
+          @media only screen and (max-width: @screen-l) {
+            font-size: 18px;
+            margin-top: 0px;
+          }
+        }
+      }
+      nz-form-control {
+        @media only screen and (max-width: @screen-l) {
+          width: 100%;
+          flex: auto;
+        }
+        &:hover {
+          input {
+            border-color: @orange;
+          }
+        }
+        input {
+          font-size: 20px;
+          border-radius: 10px;
+          @media only screen and (max-width: @screen-l) {
+            font-size: 18px;
+          }
+          &:focus {
+            border-color: @orange;
+          }
+        }
+      }
+
+      ::ng-deep.checkbox-control {
+        a {
+          color: @orange;
+          text-decoration: underline;
+          font-weight: bold;
+        }
+        .ant-checkbox-wrapper {
+          span {
+            span {
+              font-size: 20px;
+              @media only screen and (max-width: @screen-l) {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+
+        .ant-checkbox-checked {
+          &::after {
+            border-color: @orange;
+          }
+        }
+        .ant-checkbox,
+        .ant-checkbox-checked {
+          &:hover {
+            .ant-checkbox-inner {
+              border-color: @orange;
+            }
+          }
+        }
+        .ant-checkbox-checked {
+          .ant-checkbox-inner {
+            background-color: @orange;
+            border-color: @orange;
+          }
+        }
+      }
+
+      button {
+        background: @orange;
+        border: 0px;
+        font-size: 20px;
+        @media only screen and (max-width: @screen-l) {
+          font-size: 18px;
+        }
+        font-weight: bold;
+        &:hover {
+          color: @orange;
+          background-color: white;
+          border: 1px solid @orange;
+        }
+        .icon-container {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 1150px) {
+    margin-top: 50px;
+  }
+
+  @media only screen and (max-width: 1150px) {
+    margin-top: 30px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    margin-top: 20px;
+  }
+}

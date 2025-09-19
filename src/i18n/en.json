@@ -1,0 +1,122 @@
+{
+  "test": {
+    "congratulations": "Congratulations! Your app is running. 🎉"
+  },
+  "navElement": {
+    "findRepair": "Find Repair",
+    "logo": "Navigation to homepage",
+    "user": {
+      "login": "Login",
+      "register": "Registration"
+    }
+  },
+  "searchbar": {
+    "searchButton": "Search",
+    "categories": "Categories",
+    "categorieChosen": "Categorie chosen",
+    "categoriesChosen": "Categories chosen",
+    "postalCode": "Zip Code"
+  },
+  "headerSection": {
+    "repairButton": "Find a repair shop",
+    "initiativeOf": "Initiative of"
+  },
+  "map": {
+    "touch": "Move the map with 2 fingers",
+    "scroll": "Use Ctrl+Scroll to zoom the map",
+    "scrollMac": "Use \u2318+Scroll to zoom the map"
+  },
+  "footer": {
+    "sponsoredBy": "Sponsored by:",
+    "contactLink": "Contact",
+    "contactImprint": "Imprint",
+    "contactDataProtection": "Data protection",
+    "contactCookies": "Cookies",
+    "accessibility": "Accessibility statement",
+    "termsOfUse": "Terms of use",
+    "participationCriteria": "Participation criteria"
+  },
+  "profileCard": {
+    "profileAdress": "Address",
+    "profileOpeningTimes": "Opening Times",
+    "profileNextEvent": "Next Event",
+    "profileMoreInfo": "More Information"
+  },
+  "FAQ": {
+    "title": "FAQ"
+  },
+  "participate": {
+    "moreInfo": "More information",
+    "participateNow": "Participate now"
+  },
+  "repairProfile": {
+    "seeLessButton": "See Less",
+    "seeMoreButton": "See More",
+    "productCategory": "Product categories (Find categories by entering keywords in the field.)",
+    "productCategoryShort": "Product categories",
+    "brands": "Brands",
+    "services": "Services (What services and repairs does your business offer?)",
+    "servicesShort": "Services",
+    "parking": "Parking",
+    "publicTransport": "Public transport",
+    "language": "We speak",
+    "edit": {
+      "headline": "My Profile",
+      "info": "Here you can edit all the information about your repair shop",
+      "uploadLimit": "You can't upload more files",
+      "uploadInstructions": "Click or drag file to this area to upload",
+      "uploadHint": "You can upload up to 5 files (.png, .jpg, .jpeg)",
+      "name": "Name",
+      "companyNo": "Repair No. (will not be published)",
+      "description": "Description",
+      "address": "Address",
+      "postCode": "Postcode",
+      "location": "Location",
+      "url": "Website URL",
+      "email": "E-Mail",
+      "telephone": "Telephone (please provide area code)",
+      "mobile": "Mobile",
+      "openingHours": "Opening Hours",
+      "selectPlaceholder": "Please select",
+      "saveButton": "Save",
+      "sendButton": "Send",
+      "updateButton": "Update",
+      "cancelButton": "Cancel",
+      "emptyInputError": "Please fill in",
+      "successMessage": "Your data has been saved but NOT yet submitted. Please click on \"Submit\" to submit your profile for review and publication.",
+      "sendMessage": "Have you checked your entries for accuracy and completeness and do you now want to submit them for review and publication?",
+      "sendSuccessMessage": "Your data has been submitted for verification. As soon as your profile is published, you will receive a notification.",
+      "updateSuccessMessage": "Your profile was updated successfully.",
+      "errorMessage": "An error occured. The data could not be saved",
+      "errorFileMessage": "File size can't exceed 2 MB."
+    }
+  },
+  "accessibility": {
+    "altLogo": "Logo Icon with Name Repami",
+    "altLogoSenate": "Icon of the senate administration",
+    "altInputPostalCode": "Input of the postal code",
+    "titleFAQ": "Navigation to the Q&A section",
+    "titleLanguages": "Language Dropdown",
+    "titleMember": "Member Log-in",
+    "titleDrawer": "Toggle menu",
+    "titleNavigation": "Navigate to",
+    "iconOf": "Image of",
+    "altIconFacebook": "Icon Facebook",
+    "altIconInstagram": "Icon Instagram",
+    "altIconLinkedIn": "Icon Linkedin"
+  },
+  "registration": {
+    "email": "E-Mail",
+    "emailInvalid": "The E-Mail is invalid",
+    "password": "Password",
+    "passwordConfirm": "Confirm password",
+    "iAccept": "I accept the",
+    "registerButton": "Register"
+  },
+  "login": {
+    "email": "E-Mail",
+    "emailInvalid": "The E-Mail is invalid",
+    "password": "Password",
+    "loginButton": "Login"
+  }
+}

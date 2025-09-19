@@ -1,0 +1,25 @@
+<div *ngIf="startElementsHeader" class="header-section-outer-container">
+  <div class="part left">
+    <div class="top">
+      <h1>{{startElementsHeader.Slogan}}</h1>
+      <p>{{startElementsHeader.Text}}</p>
+      <div class="search-bar">
+        <searchbar class="searchbar mobile" [showSearchButton]="false"></searchbar>
+        <searchbar class="searchbar tablet" [showSearchButton]="true"></searchbar>
+      </div>
+    </div>
+
+    <div class="cooperation">
+      <span>{{ 'headerSection.initiativeOf' | translate }}</span>
+      <div class="logos">
+        <img src="../../../assets/anstiftung.svg" alt="Logo Anstiftung">
+        <img src="../../../assets/BSR_weiss.svg" alt="Logo BSR">
+        <img src="../../../assets/Handwerkskammer.svg" alt="Logo Handwerkskammer">
+      </div>
+    </div>
+  </div>
+  <div class="part">
+    <img class="header-img" src="{{headerImageUrl}}" alt="{{startElementsHeader.ImageAltText}}">
+
+  </div>
+</div>

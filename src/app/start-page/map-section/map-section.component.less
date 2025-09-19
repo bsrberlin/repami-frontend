@@ -1,0 +1,33 @@
+.map-section{
+    position: relative;
+}
+.legend{
+  display: flex;
+  margin-left: 40px;
+  @media only screen and (max-width: 1550px) {
+    margin-left: 20px;
+  }
+  gap: 2.5%;
+  .dot{
+    display: flex;
+    gap: 10px;
+    @media only screen and (max-width: 570px) {
+
+      gap: 5px;
+    }
+    margin-top: 10px;
+    .text{
+      position: relative;
+      top: -11%;
+      @media only screen and (max-width: 834px) {
+
+        top: -1%;
+      }
+      @media only screen and (max-width: 570px) {
+
+        top: 3%;
+      }
+    }
+  }
+
+}

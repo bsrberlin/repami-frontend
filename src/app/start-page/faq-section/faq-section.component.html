@@ -1,0 +1,10 @@
+<div class="faq-container" *ngIf="faqSection">
+    <div class="section">
+        <h2>{{'FAQ.title' | translate}}</h2>
+        <nz-collapse nzGhost [nzBordered]="false" [nzExpandIconPosition]="'right'" *ngFor="let faq of faqSection">
+            <nz-collapse-panel [nzHeader]="faq.Frage" >
+                <div [innerHTML]="faq.Antwort"></div>
+            </nz-collapse-panel>
+        </nz-collapse>
+    </div>
+</div>

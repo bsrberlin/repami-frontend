@@ -1,0 +1,194 @@
+@import "../../../styles.less";
+@import "leaflet/dist/leaflet.css";
+@import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
+
+.map {
+  height: 800px;
+  width: 100%;
+
+  @media only screen and (max-width: 650px) {
+    height: calc(100vh - 100px);
+    min-height: 550px;
+  }
+}
+
+::ng-deep #scroll-map {
+  position: relative;
+  top: -240px;
+  visibility: hidden;
+}
+
+::ng-deep #map-repair {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px 50px;
+
+  .results {
+    position: relative;
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    z-index: 499;
+
+    @media only screen and (max-width: 650px) {
+      height: 90%;
+    }
+
+    @media only screen and (max-width: 500px) {
+      max-width: 100%;
+    }
+    &:has(.single-result-container) {
+      height: fit-content;
+    }
+    .single-result-container {
+      &.white-background{
+        background-color: white;
+      }
+      &.pink-background{
+        background-color: @light-pink ;
+      }
+      &.orange-background{
+        background-color: @light-orange;
+      }
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      z-index: 500;
+      background-color: @white;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 10px;
+      padding-right: 30px;
+
+      @media only screen and (max-width: 650px) {
+        margin-right: 40px;
+        width: 100%;
+      }
+    }
+
+    .multiple-result-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      z-index: 500;
+      background-color: @white;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding-block: 10px;
+
+      &.desktop {
+        @media only screen and (max-width: 650px) {
+          display: none;
+        }
+      }
+
+      &.mobile {
+        @media only screen and (min-width: 651px) {
+          display: none;
+        }
+      }
+
+      .profile-card:not(:last-child) {
+        border-bottom: 1px solid @dark-grey;
+      }
+    }
+
+    .profile-card {
+      position: relative;
+      z-index: 501;
+    }
+  }
+
+  .leaflet-control-zoom {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: none;
+
+    a {
+      border: 1px solid @purple;
+      height: 60px;
+      width: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      color: @pink;
+      transition: 0s;
+
+      &:hover {
+        color: @white;
+        background-color: @pink;
+        border: none;
+      }
+
+      span {
+        transform: scale(250%);
+        text-align: center;
+        font-weight: 100;
+      }
+    }
+  }
+
+  .leaflet-pane.leaflet-marker-pane {
+    .cluster-icon {
+      &.cluster-icon-betriebe {
+        background-color: @dark-purple;
+      }
+
+      &.cluster-icon-cafes {
+        background-color: @orange;
+      }
+
+      &.cluster-icon-both {
+        background-color: @dark-purple;
+        border: 4px solid @orange;
+      }
+
+      div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        color: @white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+    }
+    .leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive {
+      filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 30%));
+      &.pin{
+        filter: none
+      }
+      &.noPin{
+        filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 30%));
+      }
+      border-radius: 100%;
+    }
+  }
+}
+.switch-map-list-container {
+  position: absolute;
+  bottom: 27px;
+  left: calc(50% -75px);
+  z-index: 999;
+
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (min-width: 651px) {
+    display: none;
+  }
+
+  .leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive {
+    box-shadow: 0px 3px 6px black;
+    border-radius: 100%;
+  }
+}

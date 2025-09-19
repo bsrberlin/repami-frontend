@@ -1,0 +1,127 @@
+@import "../../../styles.less";
+
+.profile-card {
+  &.white-background {
+    background-color: white;
+  }
+  &.pink-background {
+    background-color: @light-pink;
+  }
+  &.orange-background {
+    background-color: @light-orange;
+  }
+  width: 500px;
+  font-family: "FiraSans Regular";
+
+  h4 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  @media only screen and (max-width: 1150px) {
+    width: 300px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    width: 250px;
+  }
+
+  @media only screen and (max-width: 650px) {
+    width: 100%;
+  }
+
+  .close-button {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+  }
+
+  .tag {
+    border: 1px solid;
+    border-radius: 6px;
+    background-color: white;
+    margin-bottom: 10px;
+
+    &.desktop {
+      @media only screen and (max-width: 1150px) {
+        display: none;
+      }
+    }
+    &.repairCafe {
+      border: 2px solid @orange;
+    }
+
+    &.craftBusiness {
+      border: 2px solid @pink;
+    }
+
+    &.tablet {
+      @media only screen and (min-width: 1151px) {
+        display: none;
+      }
+    }
+  }
+
+  .info {
+    margin-bottom: 20px;
+  }
+
+  .button-orange {
+    background-color: @orange;
+    border: solid 1px @orange;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      color: @orange;
+      border: solid 1px @orange;
+    }
+  }
+
+  .extra-info-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    .extra-info-container-small {
+      width: 50%;
+
+      @media only screen and (max-width: @screen-l) {
+        width: 100%;
+      }
+    }
+
+    @media only screen and (max-width: 1150px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .extra-info-headline {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 5px;
+
+      h5 {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 22px;
+        margin-bottom: 0px;
+      }
+    }
+
+    .extra-info-content {
+      padding-left: 20px;
+
+      p {
+        margin-bottom: 5px;
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  button {
+    margin-top: 20px;
+  }
+}

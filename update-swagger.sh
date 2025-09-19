@@ -1,0 +1,1 @@
+node_modules/.bin/ng-openapi-gen -i ../reparaturnetzwerk-backend/src/extensions/documentation/documentation/1.0.0/full_documentation.json

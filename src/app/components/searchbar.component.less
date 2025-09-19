@@ -1,0 +1,267 @@
+@import "../../styles.less";
+
+::ng-deep .cdk-overlay-pane:has(.ant-select-tree-dropdown) {
+  // @media only screen and (max-width: 805px) {
+  //   width: auto !important;
+  // }
+  .ant-select-tree-dropdown {
+    margin-top: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .ant-select-dropdown {
+    /* For Webkit browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: @purple;
+    }
+
+    &::-webkit-scrollbar-track {
+    }
+    .ant-select-tree {
+      .ant-select-tree-treenode {
+        font-size: 18px;
+        min-height: 40px;
+        align-items: center;
+        border-bottom: 1px solid @dark-grey;
+
+        &[ng-reflect-is-selectable~="true"] {
+          &:hover {
+            color: @orange;
+            background-color: white;
+            font-weight: bold;
+          }
+        }
+
+        .ant-select-tree-switcher {
+          color: @purple;
+          display: flex;
+          align-items: center;
+          padding: 0px 5px;
+        }
+
+        .ant-select-tree-node-content-wrapper {
+          word-break: break-word;
+          &:hover {
+            background-color: white;
+          }
+          &.ant-select-tree-node-selected {
+            background-color: white;
+            color: @orange;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .cdk-overlay-pane > .ant-select-tree-dropdown {
+  @media only screen and (max-width: 805px) {
+    width: 487px !important;
+  }
+  @media only screen and (max-width: 650px) {
+    width: 442px !important;
+  }
+
+  @media only screen and (max-width: 575px) {
+    width: 392px !important;
+  }
+
+  @media only screen and (max-width: 515px) {
+    width: 307px !important;
+  }
+}
+
+.category-filter-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 5px;
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+
+  .button {
+    color: @white;
+    background-color: @orange;
+    font-size: 18px;
+
+    & a {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    &:hover {
+      background-color: @white;
+      cursor: pointer;
+      color: @orange;
+
+      a {
+        color: @orange;
+      }
+      &:focus {
+        @media only screen and (max-width: @screen-md) {
+          color: @white !important;
+          background-color: @orange !important;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1150px) {
+    flex-wrap: nowrap;
+  }
+
+  .search-input-fields {
+    display: flex;
+    width: 100%;
+
+    ::ng-deep .ant-form-item {
+      margin-right: 0px;
+
+      .ant-form-item-control-input {
+        height: 100%;
+        div {
+          height: 100%;
+
+          .ant-tree-select {
+            font-size: 18px;
+            height: 55px;
+
+            &.long {
+              @media only screen and (max-width: 515px) {
+                display: none;
+              }
+            }
+
+            &.short {
+              @media only screen and (min-width: 516px) {
+                display: none;
+              }
+            }
+
+            .ant-select-selector {
+              // border-top-left-radius: 10px;
+              // border-bottom-left-radius: 10px;
+              border-radius: 10px;
+              overflow: hidden;
+              padding-right: 40px;
+
+              @media only screen and (max-width: 805px) {
+                border-radius: 10px 0 0 10px;
+              }
+
+              &.opened {
+                border-bottom-left-radius: 0px;
+              }
+            }
+
+            .ant-select-selection-search,
+            .ant-select-selection-item {
+              display: flex !important;
+              align-items: center;
+            }
+            .ant-select-arrow,
+            .ant-select-clear {
+              span {
+                svg {
+                  width: 25px;
+                  height: 25px;
+                  color: @purple;
+                }
+              }
+            }
+            .ant-select-clear {
+              background-color: white;
+              width: auto;
+              height: auto;
+              margin-top: -12px;
+            }
+            .ant-select-selection-placeholder {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+            .ant-select-arrow {
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .search-field {
+      height: 55px;
+      width: 180px;
+
+      @media only screen and (max-width: 650px) {
+        width: 135px;
+      }
+
+      @media only screen and (max-width: 450px) {
+        width: 90px;
+      }
+    }
+
+    .search-postal-code-group {
+      padding-block: 0px;
+      border: none;
+      width: 180px;
+      border-radius: 0px;
+      border-top-right-radius: 10px;
+
+      @media only screen and (max-width: 650px) {
+        width: 135px;
+      }
+
+      @media only screen and (max-width: 450px) {
+        width: 90px;
+      }
+
+      &.unopened {
+        border-bottom-right-radius: 10px;
+      }
+
+      .search-postal-code-field {
+        padding-inline: 5px;
+
+        font-size: 18px;
+        color: #1e1e1e;
+
+        &.long {
+          @media only screen and (max-width: 650px) {
+            display: none;
+          }
+        }
+
+        &.short {
+          @media only screen and (min-width: 651px) {
+            display: none;
+          }
+        }
+      }
+
+      ::ng-deep .ant-input-suffix {
+        .pin-icon {
+          svg {
+            width: 25px;
+            height: 25px;
+            color: @purple;
+          }
+        }
+      }
+    }
+  }
+}

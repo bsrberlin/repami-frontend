@@ -1,0 +1,249 @@
+@import "../../../styles.less";
+
+.header-section-outer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: @dark-purple;
+  color: white;
+  height: auto;
+
+  @media only screen and (max-width: @screen-l) {
+    margin-top: 0px;
+    min-height: calc(~"100% - 100px");
+    max-height: calc(~"100% - 100px");
+    flex-direction: column;
+  }
+
+  @media only screen and (max-width: @screen-md) {
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+  }
+
+  .part {
+    width: 50%;
+    max-width: 50%;
+    color: white;
+    height: 100%;
+
+    @media only screen and (max-width: @screen-l) {
+      width: 100%;
+      max-width: 100%;
+      height: 50%;
+    }
+
+    &.left {
+      padding-left: 15%;
+      padding-right: 8%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      @media only screen and (max-width: 1550px) {
+        padding: 0px 5%;
+      }
+
+      @media only screen and (max-width: @screen-l) {
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 70%;
+        gap: 30px;
+        width: clamp(70vw, 85%, 90vw);
+      }
+
+      .top {
+        margin-top: 50px;
+
+        @media only screen and (max-width: @screen-l) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: 50px;
+        }
+
+        @media only screen and (max-width: 570px) {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+
+        h1,
+        h2,
+        p {
+          color: white;
+        }
+
+        h1 {
+          font-size: 64px;
+
+          @media only screen and (max-width: @screen-l) {
+            text-align: center;
+          }
+
+          @media only screen and (max-width: 770px) {
+            margin-bottom: 10px;
+            line-height: 1.2;
+          }
+
+          @media only screen and (max-width: 570px) {
+            font-size: 42px;
+          }
+        }
+
+        p {
+          font-size: 32px;
+
+          @media only screen and (max-width: @screen-l) {
+            font-size: 20px;
+            text-align: center;
+          }
+
+          @media only screen and (max-width: 570px) {
+            font-size: 18px;
+          }
+        }
+
+        .search-bar {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          height: auto;
+
+          .searchbar {
+            &.mobile {
+              display: none;
+
+              @media only screen and (max-width: 805px) {
+                display: flex;
+                width: 100%;
+                border: none;
+                box-shadow: none;
+                align-items: center;
+                justify-content: center;
+              }
+
+              ::ng-deep .ant-form {
+                nz-tree-select {
+                  width: 300px;
+                  @media only screen and (max-width: 805px) {
+                    width: 350px !important;
+                  }
+                  @media only screen and (max-width: 575px) {
+                    width: 300px !important;
+                  }
+                  @media only screen and (max-width: 515px) {
+                    width: 250px !important;
+                  }
+                  @media only screen and (max-width: 575px) {
+                    flex-wrap: nowrap;
+                  }
+                }
+
+                .postal-code-item {
+                  @media only screen and (max-width: 575px) {
+                    flex-wrap: nowrap;
+                  }
+                }
+                ::ng-deep .ant-form-item-control {
+                  @media only screen and (max-width: 575px) {
+                    flex: auto;
+                  }
+                  .search-postal-code-group {
+                    border-top-right-radius: 0px;
+                    border-bottom-right-radius: 0px;
+
+                    @media only screen and (max-width: 515px) {
+                      width: 100px !important;
+                    }
+                  }
+                }
+                ::ng-deep .mobile-search-item {
+                  button {
+                    border-top-left-radius: 0px;
+                    border-bottom-left-radius: 0px;
+                    border: 1px solid @orange;
+                    height: 100%;
+
+                    svg {
+                      width: 25px;
+                      height: 25px;
+                    }
+                  }
+                }
+              }
+            }
+
+            &.tablet {
+              display: flex;
+              width: 100%;
+              border: none;
+              box-shadow: none;
+              align-items: center;
+              justify-content: center;
+              height: auto;
+
+              ::ng-deep .ant-form {
+                justify-content: flex-start;
+                nz-tree-select {
+                  width: 400px;
+                }
+              }
+
+              @media only screen and (min-width: @screen-l-min ) {
+                justify-content: left;
+              }
+
+              @media only screen and (max-width: 805px) {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      .cooperation {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 100%;
+        margin-top: 50px;
+
+        .logos {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 100%;
+          gap: 65px;
+          margin-bottom: 70px;
+          margin-top: 20px;
+        }
+
+        @media only screen and (max-width: @screen-l) {
+          margin-bottom: 10px;
+          width: unset;
+        }
+
+        @media only screen and (max-width: 570px) {
+          display: none;
+        }
+
+        img {
+          height: 40px;
+        }
+      }
+    }
+
+    .header-img {
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

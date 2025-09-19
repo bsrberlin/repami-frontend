@@ -1,0 +1,72 @@
+@import "../../../styles.less";
+
+.faq-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .section {
+    flex-direction: column;
+    width: 60%;
+    margin-bottom: 115px;
+
+    @media only screen and (max-width: @screen-lg) {
+      width: 80%;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 90px;
+
+      @media only screen and (max-width: @screen-lg) {
+        margin-bottom: 45px;
+      }
+
+      @media only screen and (max-width: @screen-md) {
+        font-size: 32px;
+        margin-bottom: 25px;
+      }
+
+      @media only screen and (max-width: @screen-sm) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  ::ng-deep .ant-collapse-header {
+    color: @purple;
+    font-size: 28px;
+    font-weight: bold;
+
+    @media only screen and (max-width: @screen-md) {
+      font-size: 16px;
+    }
+  }
+
+  ::ng-deep .ant-collapse-content-box {
+    font-size: 20px;
+
+    p,
+    ul {
+      a {
+        color: @orange;
+      }
+    }
+
+    @media only screen and (max-width: @screen-md) {
+      font-size: 16px;
+    }
+  }
+
+  .ant-collapse > .ant-collapse-item {
+    border-bottom: 1px solid @purple;
+
+    ::ng-deep .anticon {
+      font-size: 25px;
+
+      @media only screen and (max-width: @screen-md) {
+        font-size: 16px;
+      }
+    }
+  }
+}

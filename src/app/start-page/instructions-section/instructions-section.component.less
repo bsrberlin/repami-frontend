@@ -1,0 +1,74 @@
+@import '../../../styles.less';
+
+.instructions-outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textbox-container {
+  margin-top: 0;
+
+  @media (max-width: @screen-lg) {
+    margin-bottom: 88px;
+  }
+}
+
+.section {
+  margin-top: 150px;
+  width: 80%;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: @screen-md) {
+    margin-top: 111px;
+    margin-bottom: 76px;
+  }
+
+  @media (max-width: @screen-lg) {
+    margin-top: 111px;
+    margin-bottom: 85px;
+  }
+}
+
+.instruction {
+  text-align: center;
+  width: 100%;
+}
+
+.instruction-card-container {
+  display: flex;
+  gap: 10%;
+
+  @media (max-width: @screen-md) {
+    display: unset;
+  }
+}
+
+.instruction-card-one,
+.instruction-card-two,
+.instruction-card-three {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  .circle {
+    background-color: @orange;
+    width: 50px;
+    height: 48px;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+}
+
+.instruction-card-one,
+.instruction-card-two {
+  margin-bottom: 75px;
+}

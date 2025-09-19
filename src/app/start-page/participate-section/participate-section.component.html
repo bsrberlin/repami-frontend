@@ -1,0 +1,19 @@
+<div class="participate-container">
+  <div class="section">
+    <div class="participate-container-left">
+      <div><img src="../../../assets/participate_icon.svg" alt="{{ participateSection.Titel }} Logo" /></div>
+    </div>
+    <div class="participate-container-right">
+      <h3>{{ participateSection.Titel }}</h3>
+      <p>{{ participateSection.Beschreibungstext }}</p>
+      <div class="button-container">
+        <button nz-button class="button" routerLink="/ueber-uns">
+          {{ 'participate.moreInfo' | translate }}<span nz-icon nzType="right" nzTheme="outline"></span>
+        </button>
+        <button nz-button class="button" routerLink="/register">
+          {{ 'participate.participateNow' | translate }}<span nz-icon nzType="right" nzTheme="outline"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

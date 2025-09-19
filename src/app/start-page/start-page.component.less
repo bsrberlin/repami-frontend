@@ -1,0 +1,24 @@
+@import "../../styles.less";
+
+.start-page-outer-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  & > * {
+    width: 100%;
+  }
+
+  .bottom-section {
+    background: @gradient-white-grey;
+  }
+
+  #faq {
+    position: relative;
+    top: -270px;
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,159 @@
+<main class="main">
+    <div class="colors">
+        <h1>Farben</h1>
+        <div class="color-box">
+            <div id="purple"></div>
+            <span>#330926</span>
+        </div>
+        <div class="color-box">
+            <div id="dark-purple"></div>
+            <span>#480C35</span>
+        </div>
+        <div class="color-box">
+            <div id="pink"></div>
+            <span>#B36298</span>
+        </div>
+        <div class="color-box">
+            <div id="black"></div>
+            <span>#1E1E1E</span>
+        </div>
+        <div class="color-box">
+            <div id="grey"></div>
+            <span>#A1A2AC</span>
+        </div>
+        <div class="color-box">
+            <div id="orange"></div>
+            <span>#F24C3D</span>
+        </div>
+        <div class="color-box">
+            <div id="white"></div>
+            <span>#FFFFFF</span>
+        </div>
+        <div class="color-box">
+            <div id="gradient"></div>
+            <span>#FFFFFF - #A1A2AC, Opacity: 30% Farbverlauf</span>
+        </div>
+    </div>
+    <div>
+        <h1>Typografie</h1>
+        <h1>Headline 1</h1>
+        <h2>Headline 2</h2>
+        <h3>Subheadline 3</h3>
+        <h4>Subheadline 4</h4>
+        <p>Copy</p>
+        <p class="italic">Copy</p>
+    </div>
+    <div>
+        <h1>Elemente</h1>
+        <div class="elements">
+            <h2>Buttons</h2>
+            <div class="button">Suchen</div>
+            <div class="button" [routerLink]="['/reparaturbetriebsprofil', reperaturbetriebInfoId]">
+                Mehr Informationen
+                <span class="right-arrow-icon" nz-icon nzType="right" nzTheme="outline"></span>
+            </div>
+            <div class="zoom-button"><span nz-icon nzType="plus" nzTheme="outline"></span></div>
+            <div class="zoom-button"><span nz-icon nzType="minus" nzTheme="outline"></span></div>
+            <div class="top-button"><span nz-icon nzType="up" nzTheme="outline"></span></div>
+            <nz-option-group>
+                <button  nz-button class="map-button left" 
+                [ngClass]="{'selected': selectedButton === 'karte'}"
+                (click)="selectedButton = 'karte'">Karte</button>
+                <button  nz-button class="map-button right" 
+                [ngClass]="{'selected': selectedButton === 'liste'}"
+                (click)="selectedButton = 'liste'">Liste</button>
+            </nz-option-group>
+            <h2>Kartenpunkte</h2>
+            <div>
+                <h3>Repair Cafés:</h3>
+                <div class="circles-container">
+                    <div class="circle one repair-cafe-circle"></div>
+                    <div class="circle five repair-cafe-circle">5</div>
+                    <div class="circle ten repair-cafe-circle">10</div>
+                    <div class="circle fifteen repair-cafe-circle">15</div>
+                    <div class="circle twenty repair-cafe-circle">20</div>
+                    <div class="circle twentyfive repair-cafe-circle">25</div>
+                    <div class="circle thirty repair-cafe-circle">30</div>
+                </div>
+            </div>
+            <div>
+                <h3>Beide Anbieter:</h3>
+                <div class="circles-container">
+                    <div class="circle repair-cafe-circle five">
+                        <div class="outer-ring"></div>
+                        <div class="inner-circle">5</div>
+                    </div>
+                    <div class="circle repair-cafe-circle ten">
+                        <div class="outer-ring"></div>
+                        <div class="inner-circle">10</div>
+                    </div>
+                    <div class="circle repair-cafe-circle fifteen">
+                        <div class="outer-ring"></div>
+                        <div class="inner-circle">15</div>
+                    </div>
+                    <div class="circle repair-cafe-circle twenty">
+                        <div class="outer-ring"></div>
+                        <div class="inner-circle">20</div>
+                    </div>
+                    <div class="circle repair-cafe-circle twentyfive">
+                        <div class="outer-ring"></div>
+                        <div class="inner-circle">25</div>
+                    </div>
+                    <div class="circle repair-cafe-circle thirty">
+                        <div class="outer-ring"></div>
+                        <div class="inner-circle">30</div>
+                    </div>
+                </div>
+              </div>
+            <div>
+                <h3>Handwerksbetriebe:</h3>
+                <div class="circles-container">
+                    <div class="circle one workshop-circle"></div>
+                    <div class="circle five workshop-circle">5</div>
+                    <div class="circle ten workshop-circle">10</div>
+                    <div class="circle fifteen workshop-circle">15</div>
+                    <div class="circle twenty workshop-circle">20</div>
+                    <div class="circle twentyfive workshop-circle">25</div>
+                    <div class="circle thirty workshop-circle">30</div>
+                </div>
+            </div>
+            <h2>Slider</h2>
+            <div class="slider-container">
+                <div class="arrowIcon" (click)="testCarousel.pre()" nz-icon nzType="left"
+                nzTheme="outline"></div>
+                <nz-carousel #testCarousel [nzDots]="true">
+                    <div nz-carousel-content>
+                        <div class="slider-card"><span class="slider-card-icons" nz-icon nzType="heart" nzTheme="outline"></span>Card 1</div>
+                        <div class="slider-card">Card 2</div>
+                    </div> 
+                    <div nz-carousel-content>
+                        <div class="slider-card">
+                            Card 3
+                        </div>
+                    </div>
+                </nz-carousel>
+                <div class="arrowIcon" (click)="testCarousel.next()" nz-icon nzType="right" 
+                nzTheme="outline"></div>
+            </div>
+            <div class="slider-container mobile">
+                <div class="arrowIcon" (click)="testCarousel.pre()" nz-icon nzType="left"
+                nzTheme="outline"></div>
+                <nz-carousel #testCarousel [nzDots]="true">
+                    <div nz-carousel-content>
+                        <div class="slider-card">
+                            <span class="slider-card-icons" nz-icon nzType="heart" nzTheme="outline"></span>Card 1
+                        </div>
+                    </div>
+                    <div nz-carousel-content>
+                        <div class="slider-card">Card 2</div>
+                    </div> 
+                    <div nz-carousel-content>
+                        <div class="slider-card">Card 3</div>
+                    </div>
+                </nz-carousel>
+                <div class="arrowIcon" (click)="testCarousel.next()" nz-icon nzType="right" 
+                nzTheme="outline"></div>
+            </div>
+        </div>
+    </div>
+</main>

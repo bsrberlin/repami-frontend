@@ -1,0 +1,741 @@
+// ==============================================================
+// =                     Screen Breakpoints                     =
+// ==============================================================
+
+// Small screen / phone
+@screen-sm: 393px;
+@screen-sm-min: @screen-sm;
+
+// Medium screen / tablet
+@screen-md: 834px;
+@screen-md-min: @screen-md + 1px;
+
+// Large screen / desktop
+@screen-lg: 1200px;
+@screen-lg-min: @screen-lg;
+
+// Large tablet
+@screen-l: 1150px;
+@screen-l-min: @screen-l + 1px;
+
+// Extra extra large screen / large desktop
+@screen-xxl: 1600px;
+@screen-xxl-min: @screen-xxl;
+
+// ==============================================================
+// =                          Colors                            =
+// ==============================================================
+
+@purple: #330926;
+@dark-purple: #480c35;
+@pink: #b36298;
+@light-pink: #F5E7F0;
+@black: #1e1e1e;
+@dark-grey: #a1a2ac;
+@orange: #f24c3d;
+@light-orange: #FDECEC;
+@white: #ffffff;
+@accessibility-grey: #6E6F76;
+
+@gradient-white-grey: linear-gradient(
+  to bottom,
+  rgba(@dark-grey, 0.3),
+  rgba(@white, 0.3)
+);
+
+// ==============================================================
+// =                        Fonts                               =
+// ==============================================================
+
+@font-face {
+  font-family: "FiraSans Black";
+  src: url("./assets/fonts/FiraSans-Black.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "FiraSans Bold";
+  src: url("./assets/fonts/FiraSans-Bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "FiraSans Regular";
+  src: url("./assets/fonts/FiraSans-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "FiraSans Italic";
+  src: url("./assets/fonts/FiraSans-Italic.ttf") format("opentype");
+}
+
+// ==============================================================
+// =                        Typography                          =
+// ==============================================================
+
+h1 {
+  color: @purple;
+  font-size: 64px;
+  font-family: "FiraSans Black";
+  line-height: 84px;
+
+  @media (max-width: @screen-sm-min) {
+    font-size: 42px;
+  }
+}
+
+h2,
+h3,
+h4 {
+  font-family: "FiraSans Bold";
+}
+
+h2 {
+  color: @purple;
+  font-size: 56px;
+  font-weight: bold;
+
+  @media (max-width: @screen-sm-min) {
+    font-size: 32px;
+  }
+}
+
+h3 {
+  color: @purple;
+  font-size: 46px;
+  font-weight: bold;
+
+  @media (max-width: @screen-sm-min) {
+    font-size: 26px;
+  }
+}
+
+h4 {
+  color: @purple;
+  font-size: 28px;
+  font-weight: bold;
+
+  @media (max-width: @screen-sm-min) {
+    font-size: 21px;
+  }
+}
+
+// ==============================================================
+// =                        Layout                              =
+// ==============================================================
+
+* {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: @white;
+}
+
+body {
+  font-size: 20px !important;
+  font-weight: normal;
+  font-family: "FiraSans Regular";
+
+  @media (max-width: @screen-sm-min) {
+    font-size: 16px !important;
+  }
+
+  @media (max-width: @screen-md) {
+    font-size: 16px !important;
+  }
+}
+
+.textbox-container {
+  margin-top: 50px;
+  width: 812px;
+  margin-bottom: 75px;
+}
+
+.color-container {
+  display: flex;
+  min-height: 555px;
+  margin-bottom: 100px;
+  color: @white;
+}
+
+.map-container {
+  height: 817px;
+}
+
+.section {
+  display: flex;
+  margin-bottom: 140px;
+}
+
+.participate-container {
+  height: 518px;
+}
+
+// ==============================================================
+// =                        Elements                            =
+// ==============================================================
+
+//Buttons
+.button {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 12px;
+  height: 50px;
+  width: fit-content;
+  text-align: center;
+  border: 1px solid @purple;
+  box-shadow: 0 2px 0 rgba(@black, 0.016);
+  padding: 4px 15px;
+
+  .right-arrow-icon {
+    margin-left: 10px;
+  }
+
+  @media (max-width: @screen-sm-min) {
+    font-size: 18px;
+    height: 45px;
+
+    .right-arrow-icon {
+      display: none;
+    }
+  }
+}
+
+.top-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 12px;
+  color: @white;
+  background-color: @orange;
+  text-align: center;
+  border: 1px solid @orange;
+  box-shadow: 0 2px 0 rgba(@black, 0.016);
+  padding: 4px 15px;
+}
+
+.top-button:hover {
+  color: @orange;
+  background-color: @white;
+}
+
+.zoom-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 12px;
+  color: @pink;
+  background-color: @white;
+  text-align: center;
+  border: 1px solid @purple;
+  box-shadow: 0 2px 0 rgba(@black, 0.016);
+  padding: 4px 15px;
+}
+
+.zoom-button:hover {
+  color: @white;
+  background-color: @pink;
+}
+
+.map-button {
+  width: 75px;
+  height: 45px;
+  color: @black;
+  background-color: @white;
+  border: 1px solid @purple;
+}
+
+.map-button.right {
+  border-radius: 0 12px 12px 0;
+}
+
+.map-button.left {
+  border-radius: 12px 0 0 12px;
+  border-right-width: 0;
+}
+
+.selected {
+  background-color: @pink;
+  color: @white;
+}
+
+// map points
+.circle {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: @white;
+  font-size: 20px;
+  font-weight: bold;
+
+  @media (max-width: @screen-sm-min) {
+    font-size: 18px;
+  }
+}
+
+.circle.one {
+  width: 24px;
+  height: 24px;
+}
+
+.circle.five {
+  width: 32px;
+  height: 32px;
+}
+
+.circle.ten {
+  width: 42px;
+  height: 42px;
+}
+
+.circle.fifteen {
+  width: 48px;
+  height: 48px;
+}
+
+.circle.twenty {
+  width: 58px;
+  height: 58px;
+}
+
+.circle.twentyfive {
+  width: 68px;
+  height: 68px;
+}
+
+.circle.thirty {
+  width: 78px;
+  height: 78px;
+}
+
+.repair-cafe-circle {
+  background-color: @orange;
+}
+
+.outer-ring {
+  position: absolute;
+  border: 12px solid @orange;
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 0;
+}
+
+.inner-circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border-radius: 50%;
+  background-color: @dark-purple;
+  z-index: 1;
+}
+
+.workshop-circle {
+  background-color: @dark-purple;
+}
+
+// Slider
+::ng-deep .slider-container {
+  .arrowIcon {
+    margin-bottom: 25px;
+
+    svg {
+      width: 45px;
+      height: 45px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 370px;
+  gap: 20px;
+
+  ::ng-deep .arrowIcon {
+    svg {
+      width: 50px;
+      height: 50px;
+
+      @media only screen and (max-width: 550px) {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .slider-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    width: 50%;
+    height: 90%;
+    border-radius: 16px;
+    padding: 35px;
+
+    .slider-card-icons {
+      color: @orange;
+      width: 30%;
+      height: 60px;
+    }
+  }
+
+  [nz-carousel-content] {
+    display: flex;
+    flex-flow: nowrap;
+    border-radius: 12px;
+    gap: 5%;
+  }
+
+  .ant-carousel .slick-initialized .slick-slide {
+    display: flex;
+  }
+
+  .ant-carousel .slick-dots-bottom {
+    bottom: -13px;
+  }
+
+  .ant-carousel .slick-dots li {
+    width: 14px;
+    height: 14px;
+    margin: 0 4px;
+    border-radius: 50%;
+    background-color: @dark-grey;
+  }
+
+  li.slick-active {
+    background-color: @pink !important;
+  }
+
+  .ant-carousel .slick-dots li button {
+    display: none;
+  }
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
+}
+
+.slider-container.mobile {
+  display: flex;
+
+  @media only screen and (max-width: md) {
+    gap: 5px;
+  }
+
+  .slider-card {
+    width: 100%;
+
+    @media only screen and (min-width: 400px) {
+      height: 100%;
+    }
+
+    height: 90%;
+    text-align: center;
+  }
+
+  [nz-carousel-content] {
+    justify-content: center;
+  }
+
+  @media (min-width: 1001px) {
+    display: none;
+  }
+}
+
+// icons
+.arrowIcon {
+  color: @purple;
+}
+
+// searchbar
+.searchbar {
+  width: 500px;
+  height: 55px;
+  max-height: 505px;
+
+  border: 1px solid @purple;
+  box-shadow: 0 2px 0 rgba(@black, 0.016);
+
+  .dropdown-menu {
+    width: 100%;
+
+    .dropdown-menu-option:hover {
+      color: @orange;
+    }
+  }
+
+  text-box {
+    color: @dark-grey;
+  }
+}
+
+// inputs
+::ng-deep .ant-input {
+  border-radius: 10px;
+  height: 50px;
+}
+
+::ng-deep .ant-select-selection-placeholder {
+  color: @accessibility-grey;
+}
+
+::placeholder {
+  color: @accessibility-grey;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:@accessibility-grey;
+  opacity:1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:@accessibility-grey;
+  opacity:1;
+}
+
+.cdk-overlay-container {
+  z-index: 99999;
+}
+
+.swal2-container {
+  z-index: 99999;
+
+  div > .swal2-title {
+    font-family: "FiraSans Regular";
+    font-size: 20px !important;
+
+    @media (max-width: @screen-md) {
+      font-size: 16px !important;
+    }
+  }
+}
+
+::ng-deep .cdk-overlay-container:has(nz-option-container) {
+  z-index: 1;
+}
+
+.swal2-container {
+  .swal2-title {
+    color: @orange;
+  }
+  .swal2-confirm {
+    background-color: @orange;
+  }
+}
+
+.custom-page-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 40px;
+  min-height: 100%;
+
+  @media only screen and (max-width: @screen-lg) {
+    margin-top: 0px;
+    padding-top: 40px;
+  }
+
+  @media only screen and (max-width: @screen-sm) {
+    padding-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    @media only screen and (max-width: @screen-lg) {
+      width: 90%;
+    }
+  }
+
+  a {
+    color: @orange;
+  }
+
+  p {
+    width: 100%;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  pre {
+    code {
+      background-color: rgba(0, 0, 0, 0.1);
+
+      @media only screen and (max-width: @screen-sm) {
+        white-space: pre-wrap;
+      }
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 20px;
+  }
+
+  h2 {
+    @media only screen and (max-width: @screen-md) {
+      font-size: 40px;
+    }
+
+    @media only screen and (max-width: @screen-sm) {
+      font-size: 32px;
+    }
+  }
+
+  h3 {
+    @media only screen and (max-width: @screen-md) {
+      font-size: 26px;
+    }
+
+    @media only screen and (max-width: @screen-sm) {
+      font-size: 26px;
+    }
+  }
+}
+
+::ng-deep.input-container {
+  display: grid;
+  width: 80%;
+
+  @media only screen and (max-width: @screen-l) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: @screen-md) {
+    width: 100%;
+  }
+
+  nz-form-item {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+
+    @media only screen and (max-width: @screen-l) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .label {
+      font-weight: bold;
+      label {
+        font-size: 20px;
+        @media only screen and (max-width: @screen-l) {
+          font-size: 18px;
+        }
+      }
+    }
+    nz-form-control {
+      @media only screen and (max-width: @screen-l) {
+        width: 100%;
+        flex: auto;
+      }
+      &:hover {
+        input {
+          border-color: @orange;
+        }
+      }
+      input {
+        font-size: 20px;
+        border-radius: 10px;
+        @media only screen and (max-width: @screen-l) {
+          font-size: 18px;
+        }
+        &:focus {
+          border-color: @orange;
+        }
+      }
+    }
+
+    ::ng-deep.checkbox-control {
+      a {
+        color: @orange;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+      .ant-checkbox-wrapper {
+        span {
+          span {
+            font-size: 20px;
+            @media only screen and (max-width: @screen-l) {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+
+      .ant-checkbox-checked {
+        &::after {
+          border-color: @orange;
+        }
+      }
+      .ant-checkbox,
+      .ant-checkbox-checked {
+        &:hover {
+          .ant-checkbox-inner {
+            border-color: @orange;
+          }
+        }
+      }
+      .ant-checkbox-checked {
+        .ant-checkbox-inner {
+          background-color: @orange;
+          border-color: @orange;
+        }
+      }
+    }
+
+    button {
+      background: @orange;
+      border: 0px;
+      font-size: 20px;
+      @media only screen and (max-width: @screen-l) {
+        font-size: 18px;
+      }
+      font-weight: bold;
+      &:hover {
+        color: @orange;
+        background-color: white;
+        border: 1px solid @orange;
+      }
+      .icon-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}

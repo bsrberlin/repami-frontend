@@ -1,0 +1,34 @@
+<div class="reason-container">
+  <div *ngIf="reasonSection" class="section">
+    <h2>{{ reasonSection.Titel }}</h2>
+    <div>
+      {{ reasonSection.Beschreibungstext }}
+    </div>
+  </div>
+  <div class="slider-container">
+    <div class="arrowIcon" (click)="testCarousel.pre()" nz-icon nzType="left" nzTheme="outline"></div>
+    <nz-carousel #testCarousel [nzDots]="true">
+      <div nz-carousel-content *ngFor="let slide of slicedGruende">
+        <div class="slider-card" *ngFor="let card of slide">
+          <img class="slider-card-icons" *ngIf="card.Icon.data?.attributes?.url" [src]="getImageSrc(card)"
+            alt="{{card.IconAltText}}" />
+          <p>{{ card.Karusellkarte }}</p>
+        </div>
+      </div>
+    </nz-carousel>
+    <div class="arrowIcon" (click)="testCarousel.next()" nz-icon nzType="right" nzTheme="outline"></div>
+  </div>
+  <div class="slider-container mobile">
+    <div class="arrowIcon" (click)="testCarouselMobile.pre()" nz-icon nzType="left" nzTheme="outline"></div>
+    <nz-carousel #testCarouselMobile [nzDots]="true">
+      <div nz-carousel-content *ngFor="let slide of slicedGruendeMobil">
+        <div class="slider-card" *ngFor="let card of slide">
+          <img class="slider-card-icons" *ngIf="card.Icon.data?.attributes?.url" [src]="getImageSrc(card)"
+            alt="{{card.IconAltText}}" />
+          <p>{{ card.Karusellkarte }}</p>
+        </div>
+      </div>
+    </nz-carousel>
+    <div class="arrowIcon" (click)="testCarouselMobile.next()" nz-icon nzType="right" nzTheme="outline"></div>
+  </div>
+</div>

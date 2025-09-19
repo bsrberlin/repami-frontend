@@ -1,0 +1,146 @@
+@import "../../../styles.less";
+
+.participate-container {
+  background-color: #b36298;
+  display: flex;
+  justify-content: center;
+  height: 518px;
+
+  @media only screen and (max-width: @screen-md) {
+    height: auto;
+  }
+
+  .section {
+    color: @white;
+    background-color: @pink;
+    margin-bottom: 0;
+    width: 60%;
+    padding: 72px 0 75px 0;
+    gap: 5%;
+
+    @media only screen and (max-width: @screen-lg) {
+      width: 80%;
+    }
+
+    @media only screen and (max-width: 550px) {
+      gap: 20px;
+    }
+
+    h3 {
+      color: @white;
+      margin-bottom: 35px;
+      white-space: nowrap;
+      font-size: 56px;
+
+      @media only screen and (max-width: @screen-md) {
+        white-space: wrap;
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+    }
+
+    p {
+      @media only screen and (max-width: @screen-md) {
+        white-space: wrap;
+        font-size: 16px;
+      }
+    }
+
+    @media only screen and (max-width: @screen-xxl) {
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 334px;
+        height: 334px;
+      }
+    }
+
+    @media only screen and (max-width: 550px) {
+      width: 80%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      padding: 32px 0 35px 0;
+    }
+  }
+
+  .participate-container-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: @screen-md) {
+      width: 30%;
+    }
+
+    img {
+      width: 172px;
+      height: 172px;
+
+      @media only screen and (max-width: @screen-md) {
+        width: 100%;
+      }
+
+      @media only screen and (max-width: 550px) {
+        width: 172px;
+        height: 172px;
+      }
+    }
+  }
+
+  .participate-container-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    @media only screen and (max-width: @screen-md) {
+      width: 60%;
+    }
+
+    @media only screen and (max-width: 550px) {
+      width: 100%;
+      align-items: center;
+    }
+
+    .button-container {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 50px;
+
+      @media only screen and (max-width: @screen-md) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      @media only screen and (max-width: 550px) {
+        align-items: center;
+      }
+
+      button {
+        color: @purple;
+        background-color: white;
+        border: 1px solid @purple;
+        font-weight: bold;
+        font-size: 20px;
+
+        @media only screen and (max-width: @screen-md) {
+          font-size: 16px;
+        }
+
+        &:hover {
+          color: white;
+          background-color: @purple;
+        }
+      }
+    }
+  }
+}

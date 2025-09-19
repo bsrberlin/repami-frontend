@@ -1,0 +1,502 @@
+@import "../../styles.less";
+
+.header-container {
+  width: 100%;
+  height: 140px;
+  max-height: 140px;
+  background-color: @dark-purple;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  top: 0px;
+  color: white;
+  z-index: 99999;
+  position: relative;
+
+  @media only screen and (max-width: @screen-l) {
+    height: 100px;
+  }
+
+  &.fixed {
+    height: 100px;
+    max-height: 100px;
+    position: fixed;
+    box-shadow: none;
+  }
+
+  &.box-shadow {
+    box-shadow: black 0px -10px 20px 0px;
+  }
+
+  .header {
+    width: 70%;
+    display: flex;
+    height: 140px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    @media only screen and (max-width: 1470px) {
+      width: 80%;
+    }
+
+    @media only screen and (max-width: 1280px) {
+      width: 90%;
+    }
+    @media only screen and (max-width: 575px) {
+      gap: 0px;
+    }
+
+    .header-search {
+      display: none;
+
+      &.fixed {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        .searchbar {
+          &.mobile {
+            display: none;
+
+            @media only screen and (max-width: 805px) {
+              display: flex;
+              width: 100%;
+              border: none;
+              box-shadow: none;
+              align-items: center;
+              justify-content: center;
+            }
+
+            ::ng-deep .ant-form {
+              nz-tree-select {
+                width: 300px;
+                @media only screen and (max-width: 805px) {
+                  width: 385px !important;
+                }
+                @media only screen and (max-width: 575px) {
+                  width: 335px !important;
+                }
+                @media only screen and (max-width: 515px) {
+                  width: 250px !important;
+                }
+              }
+
+              .postal-code-item {
+                @media only screen and (max-width: 575px) {
+                  flex-wrap: nowrap;
+                }
+              }
+
+              ::ng-deep .ant-form-item-control {
+                @media only screen and (max-width: 575px) {
+                  flex: auto;
+                }
+                .search-postal-code-group {
+                  border-top-right-radius: 0px;
+                  border-bottom-right-radius: 0px;
+
+                  @media only screen and (max-width: 515px) {
+                    width: 100px !important;
+                  }
+                }
+              }
+              ::ng-deep .mobile-search-item {
+                button {
+                  border-top-left-radius: 0px;
+                  border-bottom-left-radius: 0px;
+                  border: 1px solid @orange;
+                  height: 100%;
+
+                  svg {
+                    width: 25px;
+                    height: 25px;
+                  }
+                }
+              }
+            }
+          }
+
+          &.tablet {
+            ::ng-deep .ant-form {
+              nz-tree-select {
+                width: 300px;
+              }
+
+              flex-wrap: nowrap;
+            }
+            display: flex;
+            width: 100%;
+            border: none;
+            box-shadow: none;
+            align-items: center;
+            justify-content: center;
+
+            @media only screen and (max-width: 805px) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .logo-container {
+      width: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
+
+      @media only screen and (max-width: @screen-l) {
+        width: auto;
+        max-width: 156px;
+      }
+
+      @media only screen and (max-width: @screen-sm) {
+        max-width: 127px;
+      }
+
+      &.fixed {
+        @media only screen and (max-width: @screen-l) {
+          display: none;
+        }
+
+        img {
+          margin-top: -10px;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        max-width: 240px;
+        margin-top: -20px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .header-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+
+    ::ng-deep.search-bar {
+      nz-tree-select {
+        width: 300px;
+      }
+    }
+  }
+
+  .nav-elements-container {
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+
+    @media only screen and (max-width: @screen-l) {
+      gap: 20px;
+    }
+
+    .nav-element {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: clamp(16px, 1.5vw, 20px);
+      white-space: nowrap;
+
+      @media only screen and (max-width: @screen-l) {
+        display: none;
+      }
+
+      &.fixed {
+        display: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .lang {
+      ::ng-deep .ant-dropdown-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.fixed {
+        @media only screen and (max-width: @screen-l) {
+          display: none;
+        }
+      }
+    }
+
+    ::ng-deep span {
+      svg {
+        height: 26px;
+        width: 26px;
+
+        @media only screen and (max-width: @screen-l) {
+          height: 32px;
+          width: 32px;
+        }
+      }
+    }
+
+    .toggle-menu {
+      display: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.fixed {
+        display: block;
+      }
+
+      @media only screen and (max-width: @screen-l) {
+        display: block;
+      }
+    }
+
+    .drawer-container {
+      position: absolute;
+      background-color: @dark-purple;
+      width: 0;
+      top: 100px;
+      height: calc(100vh - 100px);
+      right: -100%;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 250ms ease-in-out;
+      z-index: 1;
+
+      &.visible {
+        opacity: 1;
+        right: 0px;
+        width: 100%;
+      }
+
+      .part {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        height: 100%;
+
+        .items {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 30px;
+
+          p,
+          a {
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+        .footer-part {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+
+          .socials {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+
+            img {
+              min-width: 35px;
+              min-height: 35px;
+
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+
+          .bottom {
+            padding-top: 20px;
+            border-top: 1px solid white;
+
+            .bottom-bottom {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: row;
+              gap: 20px;
+
+              p {
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: @dark-purple;
+  padding: 10px 0px 20px;
+
+  .tablet {
+    ::ng-deep .ant-form {
+      nz-tree-select {
+        width: 300px;
+      }
+
+      flex-wrap: nowrap;
+    }
+    display: flex;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (max-width: 805px) {
+      display: none;
+    }
+  }
+
+  .mobile {
+    display: none;
+
+    @media only screen and (max-width: 805px) {
+      display: flex;
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    ::ng-deep .ant-form {
+      nz-tree-select {
+        width: 300px;
+        @media only screen and (max-width: 805px) {
+          width: 430px !important;
+        }
+        @media only screen and (max-width: 575px) {
+          width: 335px !important;
+        }
+        @media only screen and (max-width: 515px) {
+          width: 250px !important;
+        }
+      }
+
+      .postal-code-item {
+        @media only screen and (max-width: 575px) {
+          flex-wrap: nowrap;
+        }
+      }
+      ::ng-deep .ant-form-item-control {
+        @media only screen and (max-width: 575px) {
+          flex: auto;
+        }
+        .search-postal-code-group {
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px !important;
+
+          @media only screen and (max-width: 515px) {
+            width: 100px !important;
+          }
+        }
+      }
+      ::ng-deep .mobile-search-item {
+        button {
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
+          border: 1px solid @orange;
+          height: 100%;
+
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.scrolled-navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: @purple;
+  height: 100px;
+  max-height: 100px;
+  top: 0px;
+  display: none;
+
+  &.fixed {
+    display: flex;
+    position: fixed;
+  }
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+::ng-deep .ant-dropdown-menu {
+  background-color: white;
+  margin-left: -7px;
+  z-index: 99999;
+
+  li {
+    color: black;
+    text-transform: uppercase;
+    transition: all 0ms;
+
+    & > * {
+      transition: color 0ms;
+    }
+
+    &:hover {
+      color: @orange;
+      background-color: white;
+      text-shadow: 0 0 1px @orange, 0 0 1px @orange;
+    }
+    &.lowercase {
+      text-transform: none;
+    }
+  }
+}

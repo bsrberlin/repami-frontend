@@ -1,0 +1,122 @@
+{
+  "test": {
+    "congratulations": "Gratuliere! Deine App ist am laufen. 🎉"
+  },
+  "navElement": {
+    "findRepair": "Reparaturstelle finden",
+    "logo": "Navigation zur Startseite",
+    "user": {
+      "login": "Mitglieder-Login",
+      "register": "Registrieren"
+    }
+  },
+  "searchbar": {
+    "searchButton": "Suchen",
+    "categories": "Kategorien",
+    "categorieChosen": "Kategorie ausgewählt",
+    "categoriesChosen": "Kategorien ausgewählt",
+    "postalCode": "Postleitzahl"
+  },
+  "headerSection": {
+    "repairButton": "Reparaturstelle finden",
+    "initiativeOf": "Initiative von"
+  },
+  "map": {
+    "touch": "Verschieben der Karte mit 2 Fingern",
+    "scroll": "Verwende Strg+Scrollen zum Zoomen der Karte",
+    "scrollMac": "Verwende \u2318+Scroll zum Zoomen der Karte"
+  },
+  "footer": {
+    "sponsoredBy": "Gefördert durch:",
+    "contactLink": "Kontakt",
+    "contactImprint": "Impressum",
+    "contactDataProtection": "Datenschutz",
+    "contactCookies": "Cookies",
+    "accessibility": "Barrierefreiheit",
+    "termsOfUse": "Nutzungsbedingungen",
+    "participationCriteria": "Teilnahmekriterien"
+  },
+  "profileCard": {
+    "profileAdress": "Adresse",
+    "profileOpeningTimes": "Öffnungszeiten",
+    "profileNextEvent": "Nächster Termin",
+    "profileMoreInfo": "Mehr Informationen"
+  },
+  "FAQ": {
+    "title": "FAQ"
+  },
+  "participate": {
+    "moreInfo": "Mehr Informationen",
+    "participateNow": "Jetzt mitmachen"
+  },
+  "repairProfile": {
+    "seeLessButton": "Weniger lesen",
+    "seeMoreButton": "Mehr lesen",
+    "productCategory": "Produktkategorien (Finde Kategorien, indem du Begriffe in das Feld eingibst.)",
+    "productCategoryShort": "Produktkategorien",
+    "brands": "Marken und Modelle",
+    "services": "Dienstleistungen (Welche Dienst- und Reparaturleistungen bietet dein Betrieb an?)",
+    "servicesShort": "Dienstleistungen",
+    "parking": "Parkmöglichkeiten",
+    "publicTransport": "ÖPNV",
+    "language": "Sprachen",
+    "edit": {
+      "headline": "Mein Profil",
+      "info": "Hier kannst du alle Informationen zu deinem Reparaturbetrieb eintragen und ändern.",
+      "uploadLimit": "Du kannst keine weiteren Dateien hochladen",
+      "uploadInstructions": "Klick hier oder zieh eine Datei in diesen Bereich, um sie hochzuladen",
+      "uploadHint": "Du kannst bis zu 5 Dateien (.png, .jpg, .jpeg) mit einer Größe von max. 2MB hochladen",
+      "name": "Name des Betriebs",
+      "companyNo": "Betriebsnummer (Wird nicht veröffentlicht)",
+      "description": "Beschreibungstext",
+      "address": "Straße und Hausnummer",
+      "postCode": "PLZ",
+      "location": "Ort",
+      "url": "Website URL",
+      "email": "E-Mail Adresse:",
+      "telephone": "Telefonnummer (Bitte mit Vorwahl angeben)",
+      "mobile": "Mobil",
+      "openingHours": "Öffnungszeiten",
+      "selectPlaceholder": "Bitte auswählen",
+      "saveButton": "Speichern",
+      "sendButton": "Absenden",
+      "updateButton": "Aktualisieren",
+      "cancelButton": "Abbrechen",
+      "emptyInputError": "Bitte fülle das Feld aus",
+      "successMessage": "Deine Daten wurden gespeichert, aber noch NICHT übermittelt. Bitte klicke auf \"Absenden\", um dein Profil zur Prüfung und Veröffentlichung zu übermitteln.",
+      "sendMessage": "Hast du deine Eingaben auf Richtigkeit und Vollständigkeit geprüft und willst du sie zur Prüfung und Veröffentlichung nun übermitteln?",
+      "sendSuccessMessage": "Deine Daten wurden zur Prüfung übermittelt. Sobald dein Profil veröffentlicht ist, bekommst du eine Benachrichtigung.",
+      "updateSuccessMessage": "Dein Profil wurde erfolgreich aktualisiert.",
+      "errorMessage": "Ein Fehler ist beim Speichern der Daten aufgetreten",
+      "errorFileMessage": "Datei darf nicht größer als 2 MB sein."
+    }
+  },
+  "accessibility": {
+    "altLogo": "Logo Icon mit Name Repami",
+    "altLogoSenate": "Logo der Senatsverwaltung",
+    "altInputPostalCode": "Eingabe der Postleitzahl",
+    "titleFAQ": "Navigation zur FAQ-Sektion",
+    "titleLanguages": "Sprachauswahl Dropdown",
+    "titleMember": "Mitglieder Log-In ",
+    "titleDrawer": "Menü umschalten",
+    "titleNavigation": "Navigation zu",
+    "iconOf": "Bild von",
+    "altIconFacebook": "Logo Facebook",
+    "altIconInstagram": "Logo Instagram",
+    "altIconLinkedIn": "Logo Linkedin"
+  },
+  "registration": {
+    "email": "E-Mail",
+    "emailInvalid": "Die E-Mail ist nicht gültig",
+    "password": "Passwort",
+    "passwordConfirm": "Passwort bestätigen",
+    "iAccept": "Ich akzeptiere die",
+    "registerButton": "Registrieren"
+  },
+  "login": {
+    "email": "E-Mail",
+    "emailInvalid": "Die E-Mail ist nicht gültig",
+    "password": "Passwort",
+    "loginButton": "Anmelden"
+  }
+}

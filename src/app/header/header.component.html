@@ -1,0 +1,98 @@
+<div class="header-container" [ngClass]="{ 'fixed': isNavbarFixed }" [ngClass]="{ 'box-shadow': !isCustomSites }">
+  <div class="header">
+    <div class="logo-container" [ngClass]="{ 'fixed': isNavbarFixed }" routerLink="/">
+      <img src="../../assets/logo_repami.svg" alt="{{'accessibility.altLogo' | translate}}"
+        title="{{'navElement.logo' | translate}}">
+    </div>
+    <div class="header-search" [ngClass]="{ 'fixed': isNavbarFixed }">
+      <searchbar class="searchbar mobile" [showSearchButton]="false"></searchbar>
+      <searchbar class="searchbar tablet" [showSearchButton]="true"></searchbar>
+
+    </div>
+    <div class="nav-elements-container">
+      <p *ngFor="let navElement of navigationElements" class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" [routerLink]="[navElement.attributes?.Link]"
+        title="{{'accessibility.titleNavigation' | translate}} {{ navElement.attributes?.Title }}">
+        {{ navElement.attributes?.Title }}
+      </p>
+      <a href="#faq" class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
+      <div class="lang" [ngClass]="{ 'fixed': isNavbarFixed }">
+        <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+          <span nz-icon nzType="global" title="{{'accessibility.titleLanguages' | translate}}"></span>
+        </div>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item *ngFor="let language of languages" (click)="changeLanguage(language)">{{ language.code }}
+            </li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+      <div class="lang profile" [ngClass]="{ 'fixed': isNavbarFixed }">
+        <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="profileMenu">
+          <span nz-icon nzType="user" nzTheme="outline" title="{{'accessibility.titleMember' | translate}}"></span>
+        </div>
+        <nz-dropdown-menu #profileMenu="nzDropdownMenu">
+          <ul nz-menu *ngIf="!_loggedInUserService.isLoggedIn">
+            <li class="lowercase" nz-menu-item routerLink="/login">{{'navElement.user.login' | translate}}</li>
+            <li class="lowercase" nz-menu-item routerLink="/register">{{'navElement.user.register' | translate}}</li>
+          </ul>
+          <ul nz-menu *ngIf="_loggedInUserService.isLoggedIn">
+            <li class="lowercase" nz-menu-item routerLink="/reparaturbetriebsprofil/bearbeiten">Mein Profil</li>
+            <li class="lowercase" nz-menu-item (click)="logout()" >Ausloggen</li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+      <span *ngIf="!visible" nz-icon nzType="menu" class="toggle-menu" [ngClass]="{ 'fixed': isNavbarFixed }" nzTheme="outline" (click)="toggleDrawer()"
+        title="{{'accessibility.titleDrawer' | translate}}"></span>
+      <span *ngIf="visible" nz-icon nzType="close" class="toggle-menu" [ngClass]="{ 'fixed': isNavbarFixed }" nzTheme="outline"
+        (click)="toggleDrawer()"></span>
+      <div class="drawer-container" [ngClass]="{ 'visible': visible }">
+        <div class="part">
+          <div class="items">
+            <a href="#map-repair" (click)="toggleDrawer()">{{'navElement.findRepair' | translate}}</a>
+            <p *ngFor="let navElement of navigationElements" [routerLink]="[navElement.attributes?.Link]"
+              (click)="toggleDrawer()"
+              title="{{'accessibility.titleNavigation' | translate}} {{ navElement.attributes?.Title }}">
+              {{ navElement.attributes?.Title }}
+            </p>
+            <a href="#faq" (click)="toggleDrawer()" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
+          </div>
+          <div class="footer-part">
+            <div class="socials">
+              <!-- <img src="../../assets/socials-icons/facebook.svg" alt="{{'accessibility.altIconFacebook' | translate}}">
+              <img src="../../assets/socials-icons/instagram.svg" alt="{{'accessibility.altIconInstagram' | translate}}">
+              <img src="../../assets/socials-icons/linkedin.svg" alt="{{'accessibility.altIconLinkedIn' | translate}}"> -->
+            </div>
+            <div class="bottom">
+              <div class="bottom-bottom">
+                <!-- <p>
+                  {{ 'footer.contactCookies' | translate }}
+                </p> -->
+              </div>
+              <div class="bottom-bottom">
+                <p routerLink="/kontakt" (click)="toggleDrawer()">{{'footer.contactLink' | translate}}</p>
+                <p routerLink="/impressum" (click)="toggleDrawer()">{{'footer.contactImprint' | translate}}</p>
+                <p routerLink="/datenschutz" (click)="toggleDrawer()">{{'footer.contactDataProtection' | translate}}</p>
+              </div>
+              <div routerLink="/barrierearmutserklaerung" (click)="toggleDrawer()" class="bottom-bottom">
+                <p>
+                  {{'footer.accessibility' | translate}}
+                </p>
+                <span class="accessibility-mobile" routerLink="/nutzungsbedingungen"
+                title="{{'accessibility.titleNavigation' | translate}} {{'footer.termsOfUse' | translate}}">{{'footer.termsOfUse' | translate}}</span>  
+              </div>
+              <div class="bottom-bottom">
+                <span class="accessibility-mobile" routerLink="/teilnahmekriterien"
+                title="{{'accessibility.titleNavigation' | translate}} {{'footer.participationCriteria' | translate}}">{{'footer.participationCriteria' | translate}}</span>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isCustomSites" class="search-bar-container">
+  <searchbar class="searchbar tablet" [showSearchButton]="true"></searchbar>
+  <searchbar class="searchbar mobile" [showSearchButton]="false"></searchbar>
+</div>

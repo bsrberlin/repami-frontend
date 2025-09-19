@@ -1,0 +1,56 @@
+<ng-template #suffixTemplateInfo>
+  <span class="pin-icon" nz-icon nzType="environment" nzTheme="fill"></span>
+</ng-template>
+
+<form class="search-form" nz-form [formGroup]="this.sharedService.searchForm" (ngSubmit)="submitForm()"
+  [nzLayout]="'inline'">
+  <div class="search-input-fields">
+    <nz-form-item>
+      <nz-form-control>
+        <nz-tree-select class="tree-select long" formControlName="categoryFilter" [nzNodes]="nodes" nzShowSearch
+          nzPlaceHolder="Kategorie wählen" [ngModel]="this.sharedService.searchForm.value.categoryFilter"
+          nzVirtualHeight="300px" nzHideUnMatched="true" (nzOpenChange)="handleTreeSelectOpenChange($event)" [nzDropdownStyle]="{ 'top': 'auto', 'bottom': 0 }">
+          <ng-template #nzTreeTemplate let-node let-origin="origin">
+            <div (click)="toggleNodeExpansion(node)">
+              {{ node.title }}
+            </div>
+          </ng-template>
+        </nz-tree-select>
+          <nz-tree-select class="tree-select short" formControlName="categoryFilter" [nzNodes]="nodes" nzShowSearch
+          nzPlaceHolder="Kategorien" [ngModel]="this.sharedService.searchForm.value.categoryFilter"
+          nzVirtualHeight="300px" nzHideUnMatched="true" (nzOpenChange)="handleTreeSelectOpenChange($event)" [nzDropdownStyle]="{ 'top': 'auto', 'bottom': 0 }">
+          <ng-template #nzTreeTemplate let-node let-origin="origin">
+            <div (click)="toggleNodeExpansion(node)">
+              {{ node.title }}
+            </div>
+          </ng-template>
+        </nz-tree-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="postal-code-item">
+      <!-- <nz-form-control>
+        <nz-input-group class="search-postal-code-group" [nzSuffix]="suffixTemplateInfo"
+          [ngClass]="{'unopened': !nzSearchOpen}">
+          <input class="search-field search-postal-code-field long" formControlName="postalCode"
+            placeholder="Postleitzahl" type="text" [ngModel]="this.sharedService.searchForm.value.postalCode"
+            nz-input />
+          <input class="search-field search-postal-code-field short" formControlName="postalCode" placeholder="PLZ"
+            type="text" [ngModel]="this.sharedService.searchForm.value.postalCode" nz-input />
+        </nz-input-group>
+      </nz-form-control> -->
+      <nz-form-item *ngIf="!showSearchButton" class="mobile-search-item">
+        <nz-form-control>
+          <button nz-button nzType="primary" class="button mobile-button"><span nz-icon nzType="search"></span>
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-form-item>
+  </div>
+  <nz-form-item *ngIf="showSearchButton">
+    <nz-form-control>
+      <button nz-button nzType="primary" class="button">
+        {{ 'searchbar.searchButton' | translate }}<span nz-icon nzType="search"></span>
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
