@@ -20,7 +20,7 @@ jobs:
         uses: azure/docker-login@v2
         with:
           login-server: ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}
-          username: ${{ secrets.SERVICE_PRINCIPAL_NAME }}
+          username: ${{ secrets.SERVICE_PRINCIPAL_APP_ID }}
           password: ${{ secrets.SERVICE_PRINCIPAL_PASSWORD }}
 
       - name: "Build and push image"
