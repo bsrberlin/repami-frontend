@@ -27,6 +27,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}/repami-frontend:latest
+          tags: |
+            ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}/repami-frontend:${{ github.sha }}
+            ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}/repami-frontend:latest
           build-args: |
             STRAPI_URL=${{ secrets.STRAPI_URL }}
