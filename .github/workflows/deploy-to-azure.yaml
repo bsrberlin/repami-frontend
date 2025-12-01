@@ -9,6 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      STRAPI_URL: ${{ secrets.STRAPI_URL }}
+
     steps:
       - name: ACR build
         id: acr
@@ -21,4 +25,4 @@ jobs:
           repository: ${{ secrets.CONTAINER_REGISTRY_REPOSITORY }}
           image: repami-frontend
           branch: ${{ github.ref == 'refs/heads/deploy/prod' && 'deploy/prod' || github.ref == 'refs/heads/deploy/dev' && 'deploy/dev' || 'deploy/dev'}}
-          build_args: '[{ "STRAPI_URL": ${{ secrets.STRAPI_URL }} }]'
+          build_args: '[{ "STRAPI_URL": "'"${STRAPI_URL}"'" }]'
