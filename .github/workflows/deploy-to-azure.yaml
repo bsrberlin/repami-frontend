@@ -25,4 +25,4 @@ jobs:
           repository: ${{ secrets.CONTAINER_REGISTRY_REPOSITORY }}
           image: repami-frontend
           branch: ${{ github.ref == 'refs/heads/deploy/prod' && 'deploy/prod' || github.ref == 'refs/heads/deploy/dev' && 'deploy/dev' || 'deploy/dev'}}
-          build_args: '[{ "STRAPI_URL": "'"${STRAPI_URL}"'" }]'
+          build_args: '[{ "STRAPI_URL": "${STRAPI_URL}" }]'
