@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref == 'refs/heads/deploy/prod' && 'prod' || github.ref == 'refs/heads/deploy/dev' && 'dev' || 'dev'}}
 
     steps:
       - name: "Checkout"
