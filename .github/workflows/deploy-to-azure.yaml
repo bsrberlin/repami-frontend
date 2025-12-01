@@ -1,0 +1,24 @@
+name: Build and deploy repami-frontend
+
+on:
+  push:
+    branches:
+      - deploy/dev
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ACR build
+        id: acr
+        uses: azure/acr-build@v1
+        with:
+          service_principal: ${{ secrets.SERVICE_PRINCIPAL_NAME }}
+          service_principal_password: ${{ secrets.SERVICE_PRINCIPAL_PASSWORD }}
+          tenant: ${{ secrets.TENANT_ID }}
+          registry: ${{ secrets.CONTAINER_REGISTRY_NAME }}
+          repository: ${{ secrets.CONTAINER_REGISTRY_REPOSITORY }}
+          image: repami-frontend
+          branch: ${{ github.ref == 'refs/heads/deploy/prod' && 'deploy/prod' || github.ref == 'refs/heads/deploy/dev' && 'deploy/dev' || 'deploy/dev'}}
+          build_args: '[{ "STRAPI_URL": ${{ secrets.STRAPI_URL }} }]'
