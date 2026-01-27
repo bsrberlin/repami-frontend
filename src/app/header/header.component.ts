@@ -9,9 +9,10 @@ import { NavigationselementListResponseDataItem } from '../api/models';
 import { LocaleService } from '../services/locale-service.service';
 import { LoggedInUserService } from '../services/loggedin-user.service';
 import { Subscription } from 'rxjs';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
     selector: 'app-header',
-    imports: [AllImportsModule, RouterLink, SearchbarComponent],
+    imports: [AllImportsModule, RouterLink, SearchbarComponent, TranslatePipe],
     templateUrl: './header.component.html',
     styleUrl: './header.component.less'
 })

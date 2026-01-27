@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core'
 import { AllImportsModule } from '../all-imports.module';
 import { NavigationselementListResponseDataItem } from '../api/models';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'footer',
-    imports: [AllImportsModule],
+    imports: [AllImportsModule, TranslatePipe],
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.less'
 })

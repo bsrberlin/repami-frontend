@@ -2,10 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AllImportsModule } from '../../all-imports.module';
 import { ISearchResult } from '../../interfaces/isearch-result';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-profile-card',
-    imports: [AllImportsModule],
+    imports: [AllImportsModule, TranslatePipe],
     templateUrl: './profile-card.component.html',
     styleUrl: './profile-card.component.less'
 })

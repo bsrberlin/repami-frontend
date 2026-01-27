@@ -15,10 +15,11 @@ import {
 import { LocaleService } from '../services/locale-service.service';
 import { StartpageMitmachenSektionComponent } from '../api/models';
 import { ParticipateSectionComponent } from '../start-page/participate-section/participate-section.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'login-page',
-    imports: [AllImportsModule, ParticipateSectionComponent],
+    imports: [AllImportsModule, ParticipateSectionComponent, TranslatePipe],
     templateUrl: './login-page.component.html',
     styleUrl: './login-page.component.less'
 })

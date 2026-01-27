@@ -7,10 +7,11 @@ import { ICafeBetrieb } from '../interfaces/icafe-betrieb';
 import _ from 'lodash';
 import { NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/tree';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'searchbar',
-    imports: [AllImportsModule],
+    imports: [AllImportsModule, TranslatePipe],
     templateUrl: './searchbar.component.html',
     styleUrl: './searchbar.component.less'
 })

@@ -3,10 +3,11 @@ import { AllImportsModule } from '../../all-imports.module';
 import { SearchbarComponent } from '../../components/searchbar.component';
 import { environment } from '../../../environments/environment';
 import { HeaderHeaderSektionComponent } from '../../api/models';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-header-section',
-    imports: [AllImportsModule, SearchbarComponent],
+    imports: [AllImportsModule, SearchbarComponent, TranslatePipe],
     templateUrl: './header-section.component.html',
     styleUrl: './header-section.component.less'
 })

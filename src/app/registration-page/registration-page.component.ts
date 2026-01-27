@@ -18,12 +18,13 @@ import {
 import { ParticipateSectionComponent } from '../start-page/participate-section/participate-section.component';
 import { LocaleService } from '../services/locale-service.service';
 import { StartpageMitmachenSektionComponent } from '../api/models';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'registration-page',
     templateUrl: './registration-page.component.html',
     styleUrl: './registration-page.component.less',
-    imports: [AllImportsModule, ParticipateSectionComponent]
+    imports: [AllImportsModule, ParticipateSectionComponent, TranslatePipe]
 })
 export class RegistrationPageComponent {
   registerForm: FormGroup<{

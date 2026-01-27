@@ -5,10 +5,11 @@ import { environment } from '../../environments/environment';
 import _ from 'lodash';
 import { ActivatedRoute } from '@angular/router';
 import { ProductCategoryService } from '../api/services';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'repair-profile-page',
-    imports: [AllImportsModule],
+    imports: [AllImportsModule, TranslatePipe],
     templateUrl: './repair-profile-page.component.html',
     styleUrl: './repair-profile-page.component.less'
 })
