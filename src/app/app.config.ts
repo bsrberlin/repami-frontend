@@ -10,16 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
-import { HttpClient } from '@angular/common/http';
-import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 registerLocaleData(de);
 
-// required for AoT 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,12 +25,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(), 
     provideAnimations(),
     provideTranslateService({
-      defaultLanguage: localStorage['_bsr_selected_language'] || 'de',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+      fallbackLang: localStorage['_bsr_selected_language'] || 'de',
+      loader: provideTranslateHttpLoader(),
     }),
   ]
 };

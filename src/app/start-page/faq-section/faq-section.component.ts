@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { AllImportsModule } from '../../all-imports.module';
 import { marked } from 'marked';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'faq-section',
-    imports: [AllImportsModule],
+    imports: [AllImportsModule, TranslatePipe],
     templateUrl: './faq-section.component.html',
     styleUrl: './faq-section.component.less'
 })

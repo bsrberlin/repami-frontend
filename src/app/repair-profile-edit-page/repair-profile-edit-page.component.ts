@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AllImportsModule } from '../all-imports.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { environment } from '../../environments/environment';
 import { NzUploadFile, NzUploadXHRArgs } from 'ng-zorro-antd/upload';
 import { Observable, Observer, Subscription, of } from 'rxjs';
@@ -13,7 +13,7 @@ import _ from 'lodash';
 
 @Component({
     selector: 'repair-profile-edit-page',
-    imports: [AllImportsModule],
+    imports: [AllImportsModule, TranslatePipe],
     templateUrl: './repair-profile-edit-page.component.html',
     styleUrl: './repair-profile-edit-page.component.less'
 })

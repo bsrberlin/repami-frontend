@@ -25,6 +25,7 @@ import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const modules = [
     RouterModule,
@@ -58,7 +59,10 @@ const modules = [
     exports: modules,
     providers: [
         provideHttpClient(),
-        provideTranslateService(),
+        provideTranslateService({
+            fallbackLang: localStorage['_bsr_selected_language'] || 'de',
+            loader: provideTranslateHttpLoader(),
+        }),
     ]
 })
 
