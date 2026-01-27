@@ -6,12 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { environment } from '../../environments/environment';
 import { NzUploadFile, NzUploadXHRArgs } from 'ng-zorro-antd/upload';
 import { Observable, Observer, Subscription, of } from 'rxjs';
-import {
-  HttpClient,
-  HttpEventType,
-  HttpRequest,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
 import { ProductCategoryService, UploadFileService } from '../api/services';
 import { ProductCategoryListResponseDataItem } from '../api/models';
 import _ from 'lodash';
