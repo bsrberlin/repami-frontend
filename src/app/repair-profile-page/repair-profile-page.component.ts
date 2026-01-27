@@ -7,11 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductCategoryService } from '../api/services';
 
 @Component({
-  selector: 'repair-profile-page',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './repair-profile-page.component.html',
-  styleUrl: './repair-profile-page.component.less',
+    selector: 'repair-profile-page',
+    imports: [AllImportsModule],
+    templateUrl: './repair-profile-page.component.html',
+    styleUrl: './repair-profile-page.component.less'
 })
 export class RepairProfilePageComponent implements OnInit {
   reperaturProfilId: string | null = '';

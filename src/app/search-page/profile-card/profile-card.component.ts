@@ -4,11 +4,10 @@ import { ISearchResult } from '../../interfaces/isearch-result';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profile-card',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './profile-card.component.html',
-  styleUrl: './profile-card.component.less'
+    selector: 'app-profile-card',
+    imports: [AllImportsModule],
+    templateUrl: './profile-card.component.html',
+    styleUrl: './profile-card.component.less'
 })
 export class ProfileCardComponent {
 

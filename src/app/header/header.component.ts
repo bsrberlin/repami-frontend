@@ -10,11 +10,10 @@ import { LocaleService } from '../services/locale-service.service';
 import { LoggedInUserService } from '../services/loggedin-user.service';
 import { Subscription } from 'rxjs';
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [AllImportsModule, RouterLink, SearchbarComponent],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.less',
+    selector: 'app-header',
+    imports: [AllImportsModule, RouterLink, SearchbarComponent],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.less'
 })
 export class HeaderComponent {
   navigationElements!: NavigationselementListResponseDataItem[];

@@ -6,11 +6,10 @@ import { environment } from '../../../environments/environment';
 // import { environment } from '../../../environments/environment.development';
 
 @Component({
-  selector: 'reason-section',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './reason-section.component.html',
-  styleUrl: './reason-section.component.less',
+    selector: 'reason-section',
+    imports: [AllImportsModule],
+    templateUrl: './reason-section.component.html',
+    styleUrl: './reason-section.component.less'
 })
 
 export class ReasonSectionComponent implements OnInit {

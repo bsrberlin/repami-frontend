@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';

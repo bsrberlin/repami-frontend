@@ -5,11 +5,10 @@ import { firstValueFrom } from 'rxjs';
 import { LocaleService } from '../services/locale-service.service';
 
 @Component({
-  selector: 'app-test-page',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './test-page.component.html',
-  styleUrl: './test-page.component.less'
+    selector: 'app-test-page',
+    imports: [AllImportsModule],
+    templateUrl: './test-page.component.html',
+    styleUrl: './test-page.component.less'
 })
 export class TestPageComponent {
   inner_html: string | undefined = 'reparaturnetzwerk-frontend';

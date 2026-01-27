@@ -16,21 +16,21 @@ import { Subscription } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-start-page',
-  standalone: true,
-  imports: [
-    AllImportsModule, 
-    HeaderSectionComponent,
-    MapSectionComponent,
-    InstructionsSectionComponent, 
-    SearchbarComponent,
-    RepairSectionComponent,
-    ReasonSectionComponent,
-    FAQSectionComponent,
-    ParticipateSectionComponent,
-    FooterComponent],
-  templateUrl: './start-page.component.html',
-  styleUrl: './start-page.component.less'
+    selector: 'app-start-page',
+    imports: [
+        AllImportsModule,
+        HeaderSectionComponent,
+        MapSectionComponent,
+        InstructionsSectionComponent,
+        SearchbarComponent,
+        RepairSectionComponent,
+        ReasonSectionComponent,
+        FAQSectionComponent,
+        ParticipateSectionComponent,
+        FooterComponent
+    ],
+    templateUrl: './start-page.component.html',
+    styleUrl: './start-page.component.less'
 })
 
 export class StartPageComponent {

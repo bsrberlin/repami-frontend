@@ -3,11 +3,10 @@ import { AllImportsModule } from '../all-imports.module';
 import { NavigationselementListResponseDataItem } from '../api/models';
 
 @Component({
-  selector: 'footer',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.less'
+    selector: 'footer',
+    imports: [AllImportsModule],
+    templateUrl: './footer.component.html',
+    styleUrl: './footer.component.less'
 })
 
 export class FooterComponent {
