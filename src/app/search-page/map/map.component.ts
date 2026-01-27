@@ -18,11 +18,10 @@ import GestureHandling from 'leaflet-gesture-handling';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-map',
-  standalone: true,
-  imports: [AllImportsModule, ProfileCardComponent],
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.less'],
+    selector: 'app-map',
+    imports: [AllImportsModule, ProfileCardComponent],
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.less']
 })
 export class MapComponent implements OnInit {
   private map!: Leaflet.Map;

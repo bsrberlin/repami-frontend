@@ -9,11 +9,10 @@ import { NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/tree';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 
 @Component({
-  selector: 'searchbar',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './searchbar.component.html',
-  styleUrl: './searchbar.component.less',
+    selector: 'searchbar',
+    imports: [AllImportsModule],
+    templateUrl: './searchbar.component.html',
+    styleUrl: './searchbar.component.less'
 })
 export class SearchbarComponent {
   @Input() showSearchButton: boolean = true;

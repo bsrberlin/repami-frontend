@@ -20,11 +20,10 @@ import { LocaleService } from '../services/locale-service.service';
 import { StartpageMitmachenSektionComponent } from '../api/models';
 
 @Component({
-  selector: 'registration-page',
-  standalone: true,
-  templateUrl: './registration-page.component.html',
-  styleUrl: './registration-page.component.less',
-  imports: [AllImportsModule, ParticipateSectionComponent],
+    selector: 'registration-page',
+    templateUrl: './registration-page.component.html',
+    styleUrl: './registration-page.component.less',
+    imports: [AllImportsModule, ParticipateSectionComponent]
 })
 export class RegistrationPageComponent {
   registerForm: FormGroup<{

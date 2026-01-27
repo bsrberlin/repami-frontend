@@ -5,11 +5,10 @@ import { environment } from '../../../environments/environment';
 import { HeaderHeaderSektionComponent } from '../../api/models';
 
 @Component({
-  selector: 'app-header-section',
-  standalone: true,
-  imports: [AllImportsModule, SearchbarComponent],
-  templateUrl: './header-section.component.html',
-  styleUrl: './header-section.component.less'
+    selector: 'app-header-section',
+    imports: [AllImportsModule, SearchbarComponent],
+    templateUrl: './header-section.component.html',
+    styleUrl: './header-section.component.less'
 })
 
 export class HeaderSectionComponent implements OnInit {

@@ -17,11 +17,10 @@ import { StartpageMitmachenSektionComponent } from '../api/models';
 import { ParticipateSectionComponent } from '../start-page/participate-section/participate-section.component';
 
 @Component({
-  selector: 'login-page',
-  standalone: true,
-  imports: [AllImportsModule, ParticipateSectionComponent],
-  templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.less',
+    selector: 'login-page',
+    imports: [AllImportsModule, ParticipateSectionComponent],
+    templateUrl: './login-page.component.html',
+    styleUrl: './login-page.component.less'
 })
 export class LoginPageComponent {
   loginForm: FormGroup<{

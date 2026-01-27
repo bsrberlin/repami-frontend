@@ -7,11 +7,10 @@ import { LocaleService } from '../../services/locale-service.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'static-page',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './static-page.component.html',
-  styleUrl: './static-page.component.less'
+    selector: 'static-page',
+    imports: [AllImportsModule],
+    templateUrl: './static-page.component.html',
+    styleUrl: './static-page.component.less'
 })
 
 export class StaticPageComponent implements OnInit{

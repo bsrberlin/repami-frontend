@@ -3,11 +3,10 @@ import { AllImportsModule } from '../../all-imports.module';
 import { marked } from 'marked';
 
 @Component({
-  selector: 'faq-section',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './faq-section.component.html',
-  styleUrl: './faq-section.component.less'
+    selector: 'faq-section',
+    imports: [AllImportsModule],
+    templateUrl: './faq-section.component.html',
+    styleUrl: './faq-section.component.less'
 })
 
 

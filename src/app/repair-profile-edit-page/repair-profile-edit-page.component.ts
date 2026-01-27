@@ -12,11 +12,10 @@ import { ProductCategoryListResponseDataItem } from '../api/models';
 import _ from 'lodash';
 
 @Component({
-  selector: 'repair-profile-edit-page',
-  standalone: true,
-  imports: [AllImportsModule],
-  templateUrl: './repair-profile-edit-page.component.html',
-  styleUrl: './repair-profile-edit-page.component.less',
+    selector: 'repair-profile-edit-page',
+    imports: [AllImportsModule],
+    templateUrl: './repair-profile-edit-page.component.html',
+    styleUrl: './repair-profile-edit-page.component.less'
 })
 export class RepairProfileEditPageComponent implements OnInit {
   currentUserId: number | undefined;

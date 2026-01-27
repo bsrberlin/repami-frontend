@@ -14,12 +14,11 @@ import { SharedService } from './services/shared.service';
 import { MatomoService } from './services/matomo.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [ApiModule, AllImportsModule, HeaderComponent, FooterComponent, ParticipateSectionComponent],
-  providers: [StrapiProvidersModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.less'
+    selector: 'app-root',
+    imports: [ApiModule, AllImportsModule, HeaderComponent, FooterComponent, ParticipateSectionComponent],
+    providers: [StrapiProvidersModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.less'
 })
 
 export class AppComponent implements OnInit {
