@@ -20,11 +20,11 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzCascaderModule } from 'ng-zorro-antd/cascader';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
-import { TranslateModule } from '@ngx-translate/core';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { provideTranslateService } from '@ngx-translate/core';
 
 const modules = [
     RouterModule,
@@ -48,7 +48,6 @@ const modules = [
     NzCascaderModule,
     NzCarouselModule,
     NzCollapseModule,
-    TranslateModule,
     NzTreeSelectModule,
     NzCheckboxModule,
     NzUploadModule
@@ -57,7 +56,10 @@ const modules = [
 @NgModule({
     imports: modules,
     exports: modules,
-    providers: [provideHttpClient()]
+    providers: [
+        provideHttpClient(),
+        provideTranslateService(),
+    ]
 })
 
 export class AllImportsModule { }
