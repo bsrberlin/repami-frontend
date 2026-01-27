@@ -7,7 +7,7 @@ import { de_DE, provideNzI18n } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { HttpClient } from '@angular/common/http';
@@ -27,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     PageService, 
     provideNzI18n(de_DE), 
     importProvidersFrom(FormsModule), 
-    importProvidersFrom(HttpClientModule), 
+    provideHttpClient(), 
     provideAnimations(),
     TranslateModule.forRoot({
       defaultLanguage: localStorage['_bsr_selected_language'] || 'de',

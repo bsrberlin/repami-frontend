@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -30,7 +30,6 @@ const modules = [
     RouterModule,
     RouterOutlet,
     CommonModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     LeafletModule,
@@ -57,7 +56,8 @@ const modules = [
 
 @NgModule({
     imports: modules,
-    exports: modules
+    exports: modules,
+    providers: [provideHttpClient()]
 })
 
 export class AllImportsModule { }
