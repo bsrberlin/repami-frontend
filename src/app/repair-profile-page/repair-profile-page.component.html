@@ -1,122 +1,184 @@
-<div class="repair-profile-back" *ngIf="reperaturbetriebInfo">
-</div>
+@if (reperaturbetriebInfo) {
+  <div class="repair-profile-back">
+  </div>
+}
 <div class="repair-profile-outer-container">
   <div class="section">
     <div class="repair-profile-left-container">
-      <ng-container *ngIf="reperaturBetriebImages">
-        <div class="slider-container" *ngIf="reperaturBetriebImages.length > 1">
-          <nz-carousel #profileCarousel [nzDots]="false">
-            <div nz-carousel-content *ngFor="let image of reperaturBetriebImages">
-              <img class="slider-card-icons" [src]="getImageSrc(image)" />
+      @if (reperaturBetriebImages) {
+        @if (reperaturBetriebImages.length > 1) {
+          <div class="slider-container">
+            <nz-carousel #profileCarousel [nzDots]="false">
+              @for (image of reperaturBetriebImages; track image) {
+                <div nz-carousel-content>
+                  <img class="slider-card-icons" [src]="getImageSrc(image)" />
+                </div>
+              }
+            </nz-carousel>
+            <div class="slider-footer">
+              <div class="arrowIcon" (click)="profileCarousel.pre()" nz-icon nzType="left" nzTheme="outline"></div>
+              <div class="counter">{{ profileCarousel.activeIndex + 1 }}/{{ reperaturBetriebImages.length }}</div>
+              <div class="arrowIcon" (click)="profileCarousel.next()" nz-icon nzType="right" nzTheme="outline"></div>
             </div>
-          </nz-carousel>
-          <div class="slider-footer">
-            <div class="arrowIcon" (click)="profileCarousel.pre()" nz-icon nzType="left" nzTheme="outline"></div>
-            <div class="counter">{{ profileCarousel.activeIndex + 1 }}/{{ reperaturBetriebImages.length }}</div>
-            <div class="arrowIcon" (click)="profileCarousel.next()" nz-icon nzType="right" nzTheme="outline"></div>
           </div>
+        }
+        @if (reperaturBetriebImages.length == 1) {
+          <div class="image-container">
+            <img [src]="getImageSrc(reperaturBetriebImages[0])" />
+          </div>
+        }
+      }
+      @if (!reperaturBetriebImages) {
+        <div class="image-container">
+          <img src="../../assets/default_profile_img.jpg" alt="default profile image" />
         </div>
-        <div class="image-container" *ngIf="reperaturBetriebImages.length == 1">
-          <img [src]="getImageSrc(reperaturBetriebImages[0])" />
-        </div>
-      </ng-container>
-      <div class="image-container" *ngIf="!reperaturBetriebImages">
-        <img src="../../assets/default_profile_img.jpg" alt="default profile image" />
-      </div>
+      }
     </div>
-    <div *ngIf="reperaturbetriebInfo" class="repair-profile-right-container">
-      <div class="repair-profile-title">
-        <h2>{{ reperaturbetriebInfo.Name }}</h2>
-        <nz-tag class="tag">Handwerksbetrieb</nz-tag>
-      </div>
-      <div class="repair-profile-container">
-        <p class="repair-profile-description">
-          <span [innerHTML]="reperaturbetriebInfo.Description.slice(0, 420) + '(...)'"
-            *ngIf="!expandDescription && reperaturbetriebInfo.Description.length > 420"></span>
-          <span [innerHTML]="reperaturbetriebInfo.Description"
-            *ngIf="expandDescription || reperaturbetriebInfo.Description.length <= 420"></span>
-          <span *ngIf="reperaturbetriebInfo.Description.length > 420" class="expand-button"
-            (click)="toggleDescription()">
-            {{ expandDescription ? ('repairProfile.seeLessButton' | translate) : ('repairProfile.seeMoreButton' | translate) }}
-          </span>
-        </p>
-        <div class="repair-profile-info">
-          <span>
-            <img src="../../assets/profile-icons/pin.svg" alt="pin icon">
-            <span class="profile-data">{{ reperaturbetriebInfo.Address }}, {{ reperaturbetriebInfo.PLZ }}
-              {{ reperaturbetriebInfo.Location }}</span>
-          </span>
-          <hr>
-          <span *ngIf="reperaturbetriebInfo.URL">
-            <img src="../../assets/profile-icons/web_adress.svg" alt="web address icon">
-            <a class="profile-data" target="_blank" [href]="'http://' + manipulateWebsiteLink(reperaturbetriebInfo.URL)">{{ reperaturbetriebInfo.URL }}</a>
-          </span>
-          <hr *ngIf="reperaturbetriebInfo.URL">
-          <span *ngIf="reperaturbetriebInfo.EMail">
-            <img src="../../assets/profile-icons/mail.svg" alt="mail icon">
-            <a class="profile-data" href="mailto:{{ reperaturbetriebInfo.EMail }}">{{ reperaturbetriebInfo.EMail }}</a>
-          </span>
-          <hr *ngIf="reperaturbetriebInfo.EMail">
-          <span>
-            <img src="../../assets/profile-icons/phone.svg" alt="phone icon">
-            <span class="profile-data">{{ reperaturbetriebInfo.Telefone }}</span>
-          </span>
-          <hr>
-          <span *ngIf="reperaturbetriebInfo.Mobile">
-            <img src="../../assets/profile-icons/mobile.svg" alt="mobile icon">
-            <span class="profile-data">{{ reperaturbetriebInfo.Mobile }}</span>
-          </span>
-          <hr *ngIf="reperaturbetriebInfo.Mobile">
-          <span>
-            <img src="../../assets/profile-icons/clock.svg" alt="clock icon">
-            <span class="profile-data">{{ reperaturbetriebInfo.OpeningHours }}</span>
-          </span>
-          <hr>
-          <span *ngIf="mergedCategories.length > 0">
-            <img src="../../assets/profile-icons/repair.svg" alt="repair icon">
-            <span class="profile-data">{{ 'repairProfile.productCategoryShort' | translate }}: &nbsp;
-              <span *ngFor="let category of mergedCategories; let last = last">
-                <span *ngIf="!last">{{ category.attributes.Label }},&nbsp;</span>
-                <span *ngIf="last">{{ category.attributes.Label }}</span>
+    @if (reperaturbetriebInfo) {
+      <div class="repair-profile-right-container">
+        <div class="repair-profile-title">
+          <h2>{{ reperaturbetriebInfo.Name }}</h2>
+          <nz-tag class="tag">Handwerksbetrieb</nz-tag>
+        </div>
+        <div class="repair-profile-container">
+          <p class="repair-profile-description">
+            @if (!expandDescription && reperaturbetriebInfo.Description.length > 420) {
+              <span [innerHTML]="reperaturbetriebInfo.Description.slice(0, 420) + '(...)'"
+              ></span>
+            }
+            @if (expandDescription || reperaturbetriebInfo.Description.length <= 420) {
+              <span [innerHTML]="reperaturbetriebInfo.Description"
+              ></span>
+            }
+            @if (reperaturbetriebInfo.Description.length > 420) {
+              <span class="expand-button"
+                (click)="toggleDescription()">
+                {{ expandDescription ? ('repairProfile.seeLessButton' | translate) : ('repairProfile.seeMoreButton' | translate) }}
               </span>
+            }
+          </p>
+          <div class="repair-profile-info">
+            <span>
+              <img src="../../assets/profile-icons/pin.svg" alt="pin icon">
+              <span class="profile-data">{{ reperaturbetriebInfo.Address }}, {{ reperaturbetriebInfo.PLZ }}
+              {{ reperaturbetriebInfo.Location }}</span>
             </span>
-          </span>
-          <hr *ngIf="mergedCategories.length > 0">
-          <span *ngIf="reperaturbetriebInfo.BrandsandModels">
-            <img src="../../assets/profile-icons/brands.svg" alt="brands icon">
-            <span class="profile-data">{{ 'repairProfile.brands' | translate }}: {{ reperaturbetriebInfo.BrandsandModels }}</span>
-          </span>
-          <hr *ngIf="reperaturbetriebInfo.BrandsandModels">
-          <span *ngIf="reperaturbetriebInfo.Parking">
-            <img src="../../assets/profile-icons/parking.svg" alt="parking icon">
-            <span class="profile-data">{{ 'repairProfile.parking' | translate }}: {{ reperaturbetriebInfo.Parking }}</span>
-          </span>
-          <hr *ngIf="reperaturbetriebInfo.Parking">
-          <span  *ngIf=" reperaturbetriebInfo.PublicTransport">
-            <img src="../../assets/profile-icons/public_transport.svg" alt="public transport icon">
-            <span class="profile-data">{{ 'repairProfile.publicTransport' | translate }}: {{ reperaturbetriebInfo.PublicTransport }}</span>
-          </span>
-          <hr  *ngIf=" reperaturbetriebInfo.PublicTransport">
-          <span *ngIf="reperaturBetriebLanguages">
-            <img src="../../assets/profile-icons/language.svg" alt="language icon">
-            <span class="profile-data">{{ 'repairProfile.language' | translate }}: {{ reperaturBetriebLanguages }}
-            </span>
-          </span>
-          <hr *ngIf="reperaturBetriebLanguages">
-          <span>
-            <img src="../../assets/profile-icons/services.svg" alt="services icon">
-            <div class="repair-profile-info-margin">
-              <p class="profile-data-without-margin" [innerHTML]="('repairProfile.servicesShort' | translate) + ':\<br>' + reperaturbetriebInfo.Services.slice(0, 420) + '(...)'"
-                *ngIf="!expandServices && reperaturbetriebInfo.Services.length > 420"></p>
-              <p class="profile-data-without-margin" [innerHTML]="('repairProfile.servicesShort' | translate) + ':\<br>' + reperaturbetriebInfo.Services"
-                *ngIf="expandServices || reperaturbetriebInfo.Services.length <= 420"></p>
-              <p *ngIf="reperaturbetriebInfo.Services.length > 420" class="expand-button without-margin"
-                (click)="toggleServices()">{{ expandServices ? ('repairProfile.seeLessButton' | translate) : ('repairProfile.seeMoreButton' | translate) }}
-              </p>
-            </div>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+            <hr>
+              @if (reperaturbetriebInfo.URL) {
+                <span>
+                  <img src="../../assets/profile-icons/web_adress.svg" alt="web address icon">
+                  <a class="profile-data" target="_blank" [href]="'http://' + manipulateWebsiteLink(reperaturbetriebInfo.URL)">{{ reperaturbetriebInfo.URL }}</a>
+                </span>
+              }
+              @if (reperaturbetriebInfo.URL) {
+                <hr>
+                }
+                @if (reperaturbetriebInfo.EMail) {
+                  <span>
+                    <img src="../../assets/profile-icons/mail.svg" alt="mail icon">
+                    <a class="profile-data" href="mailto:{{ reperaturbetriebInfo.EMail }}">{{ reperaturbetriebInfo.EMail }}</a>
+                  </span>
+                }
+                @if (reperaturbetriebInfo.EMail) {
+                  <hr>
+                  }
+                  <span>
+                    <img src="../../assets/profile-icons/phone.svg" alt="phone icon">
+                    <span class="profile-data">{{ reperaturbetriebInfo.Telefone }}</span>
+                  </span>
+                  <hr>
+                    @if (reperaturbetriebInfo.Mobile) {
+                      <span>
+                        <img src="../../assets/profile-icons/mobile.svg" alt="mobile icon">
+                        <span class="profile-data">{{ reperaturbetriebInfo.Mobile }}</span>
+                      </span>
+                    }
+                    @if (reperaturbetriebInfo.Mobile) {
+                      <hr>
+                      }
+                      <span>
+                        <img src="../../assets/profile-icons/clock.svg" alt="clock icon">
+                        <span class="profile-data">{{ reperaturbetriebInfo.OpeningHours }}</span>
+                      </span>
+                      <hr>
+                        @if (mergedCategories.length > 0) {
+                          <span>
+                            <img src="../../assets/profile-icons/repair.svg" alt="repair icon">
+                            <span class="profile-data">{{ 'repairProfile.productCategoryShort' | translate }}: &nbsp;
+                              @for (category of mergedCategories; track category; let last = $last) {
+                                <span>
+                                  @if (!last) {
+                                    <span>{{ category.attributes.Label }},&nbsp;</span>
+                                  }
+                                  @if (last) {
+                                    <span>{{ category.attributes.Label }}</span>
+                                  }
+                                </span>
+                              }
+                            </span>
+                          </span>
+                        }
+                        @if (mergedCategories.length > 0) {
+                          <hr>
+                          }
+                          @if (reperaturbetriebInfo.BrandsandModels) {
+                            <span>
+                              <img src="../../assets/profile-icons/brands.svg" alt="brands icon">
+                              <span class="profile-data">{{ 'repairProfile.brands' | translate }}: {{ reperaturbetriebInfo.BrandsandModels }}</span>
+                            </span>
+                          }
+                          @if (reperaturbetriebInfo.BrandsandModels) {
+                            <hr>
+                            }
+                            @if (reperaturbetriebInfo.Parking) {
+                              <span>
+                                <img src="../../assets/profile-icons/parking.svg" alt="parking icon">
+                                <span class="profile-data">{{ 'repairProfile.parking' | translate }}: {{ reperaturbetriebInfo.Parking }}</span>
+                              </span>
+                            }
+                            @if (reperaturbetriebInfo.Parking) {
+                              <hr>
+                              }
+                              @if ( reperaturbetriebInfo.PublicTransport) {
+                                <span >
+                                  <img src="../../assets/profile-icons/public_transport.svg" alt="public transport icon">
+                                  <span class="profile-data">{{ 'repairProfile.publicTransport' | translate }}: {{ reperaturbetriebInfo.PublicTransport }}</span>
+                                </span>
+                              }
+                              @if ( reperaturbetriebInfo.PublicTransport) {
+                                <hr >
+                              }
+                              @if (reperaturBetriebLanguages) {
+                                <span>
+                                  <img src="../../assets/profile-icons/language.svg" alt="language icon">
+                                  <span class="profile-data">{{ 'repairProfile.language' | translate }}: {{ reperaturBetriebLanguages }}
+                                  </span>
+                                </span>
+                              }
+                              @if (reperaturBetriebLanguages) {
+                                <hr>
+                                }
+                                <span>
+                                  <img src="../../assets/profile-icons/services.svg" alt="services icon">
+                                  <div class="repair-profile-info-margin">
+                                    @if (!expandServices && reperaturbetriebInfo.Services.length > 420) {
+                                      <p class="profile-data-without-margin" [innerHTML]="('repairProfile.servicesShort' | translate) + ':\<br>' + reperaturbetriebInfo.Services.slice(0, 420) + '(...)'"
+                                      ></p>
+                                    }
+                                    @if (expandServices || reperaturbetriebInfo.Services.length <= 420) {
+                                      <p class="profile-data-without-margin" [innerHTML]="('repairProfile.servicesShort' | translate) + ':\<br>' + reperaturbetriebInfo.Services"
+                                      ></p>
+                                    }
+                                    @if (reperaturbetriebInfo.Services.length > 420) {
+                                      <p class="expand-button without-margin"
+                                        (click)="toggleServices()">{{ expandServices ? ('repairProfile.seeLessButton' | translate) : ('repairProfile.seeMoreButton' | translate) }}
+                                      </p>
+                                    }
+                                  </div>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        }
+                      </div>
+                    </div>

@@ -1,6 +1,8 @@
-<div *ngIf="page" class="custom-page-container">
+@if (page) {
+  <div class="custom-page-container">
     <div class="content">
       <h1>{{page.attributes?.Title}}</h1>
       <div [innerHTML]="htmlContent"></div>
     </div>
-</div>
+  </div>
+}

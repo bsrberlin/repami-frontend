@@ -51,10 +51,10 @@ export class SearchbarComponent {
       if (
         !mainCategories
           .map((x) => x.title)
-          .includes(' ' + parent?.Label ?? 'Keine Kategorie')
+          .includes(' ' + parent?.Label)
       ) {
         mainCategories.push({
-          title: ' ' + parent?.Label ?? 'Keine Kategorie',
+          title: ' ' + parent?.Label,
           children: [],
         });
       }
