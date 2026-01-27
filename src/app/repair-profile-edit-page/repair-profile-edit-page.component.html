@@ -1,189 +1,201 @@
 <div class="repair-profile-back">
-    <h1>{{ "repairProfile.edit.headline" | translate}}</h1>
-    <p>{{ "repairProfile.edit.info" | translate}}</p>
+  <h1>{{ "repairProfile.edit.headline" | translate}}</h1>
+  <p>{{ "repairProfile.edit.info" | translate}}</p>
 </div>
 <div class="repair-profile-outer-container">
-    <form [formGroup]="reperaturProfileForm" (ngSubmit)="onSubmit()" class="section">
-        <div class="repair-profile-left-container">
-            <nz-upload
-                nzType="drag"
-                [nzMultiple]="false"
-                [nzDisabled]="this.uploadCounter >= 5"
-                [nzAccept]="allowedFormats"
-                nzListType="picture"
-                [nzShowUploadList]="showIcons"
-                [nzCustomRequest]="uploadFile.bind(this)"
-                [nzBeforeUpload]="checkFileSize"
-                [nzRemove]="removeFile.bind(this)"
-                [nzFileList]="initFileList">
-                <p class="ant-upload-drag-icon">
-                    <span nz-icon nzType="inbox"></span>
-                </p>
-                <div *ngIf="this.uploadCounter < 5">
-                    <p class="ant-upload-text">{{ "repairProfile.edit.uploadInstructions" | translate}}</p>
-                    <p class="ant-upload-hint">{{ "repairProfile.edit.uploadHint" | translate}}</p>    
-                </div>
-                <div *ngIf="this.uploadCounter >= 5">
-                    {{ "repairProfile.edit.uploadLimit" | translate}}
-                </div>
-            </nz-upload>
+  <form [formGroup]="reperaturProfileForm" (ngSubmit)="onSubmit()" class="section">
+    <div class="repair-profile-left-container">
+      <nz-upload
+        nzType="drag"
+        [nzMultiple]="false"
+        [nzDisabled]="this.uploadCounter >= 5"
+        [nzAccept]="allowedFormats"
+        nzListType="picture"
+        [nzShowUploadList]="showIcons"
+        [nzCustomRequest]="uploadFile.bind(this)"
+        [nzBeforeUpload]="checkFileSize"
+        [nzRemove]="removeFile.bind(this)"
+        [nzFileList]="initFileList">
+        <p class="ant-upload-drag-icon">
+          <span nz-icon nzType="inbox"></span>
+        </p>
+        @if (this.uploadCounter < 5) {
+          <div>
+            <p class="ant-upload-text">{{ "repairProfile.edit.uploadInstructions" | translate}}</p>
+            <p class="ant-upload-hint">{{ "repairProfile.edit.uploadHint" | translate}}</p>
+          </div>
+        }
+        @if (this.uploadCounter >= 5) {
+          <div>
+            {{ "repairProfile.edit.uploadLimit" | translate}}
+          </div>
+        }
+      </nz-upload>
+    </div>
+    <div class="repair-profile-right-container">
+      <nz-form-label class="required" nzFor="Name"><span>{{ "repairProfile.edit.name" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+      <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+        <input nz-input required formControlName="Name"/>
+      </nz-form-control>
+      <nz-form-label class="required" nzFor="CompanyNo"><span>{{ "repairProfile.edit.companyNo" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+      <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+        <input nz-input required formControlName="CompanyNo"/>
+      </nz-form-control>
+      <div class="repair-profile-container">
+        <p class="repair-profile-description">
+          <nz-form-label class="required" nzFor="Description"><span>{{ "repairProfile.edit.description" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+          <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+            <textarea [nzAutosize]="textAreaSize" nz-input required formControlName="Description"></textarea>
+          </nz-form-control>
+        </p>
+        <div class="repair-profile-info">
+          <span class="address-data">
+            <span class="address">
+              <img src="../../assets/profile-icons/pin.svg" alt="pin icon" />
+              <nz-form-label class="required" nzFor="Address"><span>{{ "repairProfile.edit.address" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+            </span>
+            <nz-form-control class="address-input" [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+              <input nz-input required formControlName="Address"/>
+            </nz-form-control>
+            <span class="address-group">
+              <nz-form-label class="required" nzFor="PLZ"><span>{{ "repairProfile.edit.postCode" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+              <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+                <input nz-input required formControlName="PLZ"/>
+              </nz-form-control>
+              <nz-form-label class="location required" nzFor="Location"><span>{{ "repairProfile.edit.location" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+              <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+                <input nz-input required formControlName="Location"/>
+              </nz-form-control>
+            </span>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/web_adress.svg" alt="web address icon" />
+              <nz-form-label nzFor="URL">{{ "repairProfile.edit.url" | translate}}: </nz-form-label>
+            </span>
+            <nz-form-control>
+              <input nz-input formControlName="URL"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/mail.svg" alt="mail icon" />
+              <nz-form-label class="profile-data required" nzFor="EMail"><span>{{ "repairProfile.edit.email" | translate}}<span class="asteriks">*</span></span></nz-form-label>
+            </span>
+            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+              <input nz-input required formControlName="EMail"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/phone.svg" alt="phone icon" />
+              <nz-form-label class="profile-data required" nzFor="Telefone"><span>{{ "repairProfile.edit.telephone" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+            </span>
+            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+              <input nz-input required formControlName="Telefone"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/mobile.svg" alt="mobile icon" />
+              <nz-form-label class="profile-data" nzFor="Mobile">{{ "repairProfile.edit.mobile" | translate}}:</nz-form-label>
+            </span>
+            <nz-form-control>
+              <input nz-input formControlName="Mobile"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/clock.svg" alt="clock icon" />
+              <nz-form-label class="profile-data required" nzFor="OpeningHours"><span>{{ "repairProfile.edit.openingHours" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+            </span>
+            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+              <input nz-input required formControlName="OpeningHours"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/repair.svg" alt="repair icon" />
+              <nz-form-label class="profile-data"><span>{{ "repairProfile.productCategory" | translate }}:<span class="asteriks">*</span></span></nz-form-label>
+            </span>
+            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+              <nz-select
+                required
+                [(ngModel)]="selectedOptions"
+                nzMode="multiple"
+                [nzPlaceHolder]="('repairProfile.edit.selectPlaceholder' | translate)"
+                nzPlacement="bottomLeft"
+                formControlName="product_categories">
+                @for (option of productCategoriesOptions; track option) {
+                  <nz-option [nzLabel]="option.attributes?.Label || ''" [nzValue]="option.id"></nz-option>
+                }
+              </nz-select>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/brands.svg" alt="brands icon" />
+              <nz-form-label class="profile-data" nzFor="BrandsandModels">{{ "repairProfile.brands" | translate }}: </nz-form-label>
+            </span>
+            <nz-form-control>
+              <input nz-input formControlName="BrandsandModels"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/parking.svg" alt="parking icon" />
+              <nz-form-label nzFor="Parking">{{ "repairProfile.parking" | translate }}: </nz-form-label>
+            </span>
+            <nz-form-control>
+              <input nz-input formControlName="Parking"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/public_transport.svg" alt="public transport icon" />
+              <nz-form-label nzFor="PublicTransport">{{ "repairProfile.publicTransport" | translate }}: </nz-form-label>
+            </span>
+            <nz-form-control>
+              <input nz-input formControlName="PublicTransport"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data">
+            <span>
+              <img src="../../assets/profile-icons/language.svg" alt="language icon" />
+              <nz-form-label nzFor="Languages">{{ "repairProfile.language" | translate }}: </nz-form-label>
+            </span>
+            <nz-form-control>
+              <input nz-input formControlName="Languages"/>
+            </nz-form-control>
+          </span>
+          <span class="profile-data" style="flex-wrap: wrap;">
+            <span>
+              <span><img src="../../assets/profile-icons/services.svg" alt="services icon" /></span>
+              <nz-form-label nzFor="Services"><span>{{ "repairProfile.services" | translate }}: <span class="asteriks">*</span></span></nz-form-label>
+            </span>
+            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+              <textarea [nzAutosize]="textAreaSize" nz-input required formControlName="Services"></textarea>
+            </nz-form-control>
+          </span>
         </div>
-        <div class="repair-profile-right-container">
-            <nz-form-label class="required" nzFor="Name"><span>{{ "repairProfile.edit.name" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
-            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                <input nz-input required formControlName="Name"/>
-            </nz-form-control>
-            <nz-form-label class="required" nzFor="CompanyNo"><span>{{ "repairProfile.edit.companyNo" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
-            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                <input nz-input required formControlName="CompanyNo"/>
-            </nz-form-control>
-            <div class="repair-profile-container">
-                <p class="repair-profile-description">
-                    <nz-form-label class="required" nzFor="Description"><span>{{ "repairProfile.edit.description" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
-                    <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                        <textarea [nzAutosize]="textAreaSize" nz-input required formControlName="Description"></textarea>
-                    </nz-form-control>
-                </p>
-                <div class="repair-profile-info">
-                    <span class="address-data">
-                        <span class="address">
-                            <img src="../../assets/profile-icons/pin.svg" alt="pin icon" />
-                            <nz-form-label class="required" nzFor="Address"><span>{{ "repairProfile.edit.address" | translate}}:<span class="asteriks">*</span></span></nz-form-label>    
-                        </span>
-                        <nz-form-control class="address-input" [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                            <input nz-input required formControlName="Address"/>
-                        </nz-form-control>
-                        <span class="address-group">
-                            <nz-form-label class="required" nzFor="PLZ"><span>{{ "repairProfile.edit.postCode" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
-                            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                                <input nz-input required formControlName="PLZ"/>
-                            </nz-form-control>
-                            <nz-form-label class="location required" nzFor="Location"><span>{{ "repairProfile.edit.location" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
-                            <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                                <input nz-input required formControlName="Location"/>
-                            </nz-form-control>
-                        </span>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/web_adress.svg" alt="web address icon" />
-                            <nz-form-label nzFor="URL">{{ "repairProfile.edit.url" | translate}}: </nz-form-label>    
-                        </span>
-                        <nz-form-control>
-                            <input nz-input formControlName="URL"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/mail.svg" alt="mail icon" />
-                            <nz-form-label class="profile-data required" nzFor="EMail"><span>{{ "repairProfile.edit.email" | translate}}<span class="asteriks">*</span></span></nz-form-label>    
-                        </span>
-                        <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                            <input nz-input required formControlName="EMail"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/phone.svg" alt="phone icon" />
-                            <nz-form-label class="profile-data required" nzFor="Telefone"><span>{{ "repairProfile.edit.telephone" | translate}}:<span class="asteriks">*</span></span></nz-form-label>    
-                        </span>
-                        <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                            <input nz-input required formControlName="Telefone"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/mobile.svg" alt="mobile icon" />
-                            <nz-form-label class="profile-data" nzFor="Mobile">{{ "repairProfile.edit.mobile" | translate}}:</nz-form-label>    
-                        </span>
-                        <nz-form-control>
-                            <input nz-input formControlName="Mobile"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/clock.svg" alt="clock icon" />
-                            <nz-form-label class="profile-data required" nzFor="OpeningHours"><span>{{ "repairProfile.edit.openingHours" | translate}}:<span class="asteriks">*</span></span></nz-form-label>    
-                        </span>
-                        <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                            <input nz-input required formControlName="OpeningHours"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/repair.svg" alt="repair icon" />
-                            <nz-form-label class="profile-data"><span>{{ "repairProfile.productCategory" | translate }}:<span class="asteriks">*</span></span></nz-form-label>    
-                        </span>
-                        <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                            <nz-select
-                            required
-                            [(ngModel)]="selectedOptions"
-                            nzMode="multiple"
-                            [nzPlaceHolder]="('repairProfile.edit.selectPlaceholder' | translate)"
-                            nzPlacement="bottomLeft"
-                            formControlName="product_categories">
-                            <nz-option *ngFor="let option of productCategoriesOptions" [nzLabel]="option.attributes?.Label || ''" [nzValue]="option.id"></nz-option>
-                          </nz-select>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/brands.svg" alt="brands icon" />
-                            <nz-form-label class="profile-data" nzFor="BrandsandModels">{{ "repairProfile.brands" | translate }}: </nz-form-label>    
-                        </span>
-                        <nz-form-control>
-                            <input nz-input formControlName="BrandsandModels"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/parking.svg" alt="parking icon" />
-                            <nz-form-label nzFor="Parking">{{ "repairProfile.parking" | translate }}: </nz-form-label>    
-                        </span>
-                        <nz-form-control>
-                            <input nz-input formControlName="Parking"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/public_transport.svg" alt="public transport icon" />
-                            <nz-form-label nzFor="PublicTransport">{{ "repairProfile.publicTransport" | translate }}: </nz-form-label>    
-                        </span>
-                        <nz-form-control>
-                            <input nz-input formControlName="PublicTransport"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data">
-                        <span>
-                            <img src="../../assets/profile-icons/language.svg" alt="language icon" />
-                            <nz-form-label nzFor="Languages">{{ "repairProfile.language" | translate }}: </nz-form-label>    
-                        </span>
-                        <nz-form-control>
-                            <input nz-input formControlName="Languages"/>
-                        </nz-form-control>
-                    </span>
-                    <span class="profile-data" style="flex-wrap: wrap;">
-                        <span>
-                            <span><img src="../../assets/profile-icons/services.svg" alt="services icon" /></span>
-                            <nz-form-label nzFor="Services"><span>{{ "repairProfile.services" | translate }}: <span class="asteriks">*</span></span></nz-form-label>    
-                        </span>
-                        <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
-                            <textarea [nzAutosize]="textAreaSize" nz-input required formControlName="Services"></textarea>
-                        </nz-form-control>
-                    </span>
-                </div>
-                <div class="button-container">
-                    <div *ngIf="!profileIsPublished && !profileFinalSend" [class]="!changesFromExistingProfile ? 'button disabled' : 'button'" (click)="onSubmit()">
-                        {{ "repairProfile.edit.saveButton" | translate}}
-                    </div>
-                    <div *ngIf="!profileFinalSend && !profileIsPublished" class="button" (click)="onSend()">
-                        {{ "repairProfile.edit.sendButton" | translate}}
-                    </div>
-                    <div *ngIf="profileIsPublished" [class]="!changesFromExistingProfile ? 'button disabled' : 'button'" (click)="onUpdate()">
-                        {{ "repairProfile.edit.updateButton" | translate}}
-                    </div>
-                </div>
+        <div class="button-container">
+          @if (!profileIsPublished && !profileFinalSend) {
+            <div [class]="!changesFromExistingProfile ? 'button disabled' : 'button'" (click)="onSubmit()">
+              {{ "repairProfile.edit.saveButton" | translate}}
             </div>
+          }
+          @if (!profileFinalSend && !profileIsPublished) {
+            <div class="button" (click)="onSend()">
+              {{ "repairProfile.edit.sendButton" | translate}}
+            </div>
+          }
+          @if (profileIsPublished) {
+            <div [class]="!changesFromExistingProfile ? 'button disabled' : 'button'" (click)="onUpdate()">
+              {{ "repairProfile.edit.updateButton" | translate}}
+            </div>
+          }
         </div>
-    </form>
+      </div>
+    </div>
+  </form>
 </div>

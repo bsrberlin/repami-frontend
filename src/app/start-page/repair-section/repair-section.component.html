@@ -1,22 +1,28 @@
-<div *ngIf="repairSection" class="repair-container">
-  <div class="color-container">
-    <div class="repair-left-container">
-      <h3>{{ repairSection.TitelLinks }}</h3>
-      <h4>{{ repairSection.UntertitelLinks }}</h4>
-      <ul>
-        <li *ngFor="let item of this.repairSection?.GrundStichpunktLinks">{{ item.Stichpunkt }}</li>
-      </ul>
-      <img src="../../../assets/repair_self.svg"
-        alt="{{'accessibility.iconOf' | translate}} {{ repairSection.TitelLinks }}">
-    </div>
-    <div class="repair-right-container">
-      <h3>{{ repairSection.TitelRechts }}</h3>
-      <h4>{{ repairSection.UnterTitelRechts }}</h4>
-      <ul>
-        <li *ngFor="let item of this.repairSection?.GrundStichpunktRechts">{{ item.Stichpunkt }}</li>
-      </ul>
-      <img src="../../../assets/repair_let.svg"
-        alt="{{'accessibility.iconOf' | translate}} {{ repairSection.TitelRechts }}">
+@if (repairSection) {
+  <div class="repair-container">
+    <div class="color-container">
+      <div class="repair-left-container">
+        <h3>{{ repairSection.TitelLinks }}</h3>
+        <h4>{{ repairSection.UntertitelLinks }}</h4>
+        <ul>
+          @for (item of this.repairSection?.GrundStichpunktLinks; track item) {
+            <li>{{ item.Stichpunkt }}</li>
+          }
+        </ul>
+        <img src="../../../assets/repair_self.svg"
+          alt="{{'accessibility.iconOf' | translate}} {{ repairSection.TitelLinks }}">
+      </div>
+      <div class="repair-right-container">
+        <h3>{{ repairSection.TitelRechts }}</h3>
+        <h4>{{ repairSection.UnterTitelRechts }}</h4>
+        <ul>
+          @for (item of this.repairSection?.GrundStichpunktRechts; track item) {
+            <li>{{ item.Stichpunkt }}</li>
+          }
+        </ul>
+        <img src="../../../assets/repair_let.svg"
+          alt="{{'accessibility.iconOf' | translate}} {{ repairSection.TitelRechts }}">
+      </div>
     </div>
   </div>
-</div>
+}

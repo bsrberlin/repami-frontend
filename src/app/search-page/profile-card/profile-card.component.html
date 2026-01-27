@@ -4,12 +4,14 @@
     'pink-background': clickedCard && searchResult.type === 'Handwerksbetrieb',
     'orange-background': clickedCard && searchResult.type === 'Reparaturcafé'
   }"
->
-  <div class="close-button" *ngIf="this.closable" nz-col [nzSpan]="2">
-    <button nz-button nzType="text">
-      <span nz-icon nzType="close" nzTheme="outline" (click)="this.close()"></span>
-    </button>
-  </div>
+  >
+  @if (this.closable) {
+    <div class="close-button" nz-col [nzSpan]="2">
+      <button nz-button nzType="text">
+        <span nz-icon nzType="close" nzTheme="outline" (click)="this.close()"></span>
+      </button>
+    </div>
+  }
   <div class="info">
     <nz-tag class="tag desktop" [ngClass]="{
     'repairCafe': searchResult.type === 'Reparaturcafé',

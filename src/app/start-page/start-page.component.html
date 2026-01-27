@@ -1,12 +1,22 @@
 <div class="start-page-outer-container">
-  <app-header-section *ngIf="startElementsHeader" [startElementsHeader]="startElementsHeader"></app-header-section>
+  @if (startElementsHeader) {
+    <app-header-section [startElementsHeader]="startElementsHeader"></app-header-section>
+  }
   <map-section></map-section>
   <instructions-section [instructionSection]="instructionSection"></instructions-section>
-  <repair-section *ngIf="repairSection" [repairSection]="repairSection"></repair-section>
+  @if (repairSection) {
+    <repair-section [repairSection]="repairSection"></repair-section>
+  }
   <div class="bottom-section">
-    <reason-section *ngIf="reasonSection" [reasonSection]="reasonSection"></reason-section>
+    @if (reasonSection) {
+      <reason-section [reasonSection]="reasonSection"></reason-section>
+    }
     <div id="faq"></div>
-    <faq-section *ngIf="faqSection" [faqSection]="faqSection"></faq-section>
+    @if (faqSection) {
+      <faq-section [faqSection]="faqSection"></faq-section>
+    }
   </div>
-  <participate-section *ngIf="participateSection" [participateSection]="participateSection"></participate-section>
+  @if (participateSection) {
+    <participate-section [participateSection]="participateSection"></participate-section>
+  }
 </div>

@@ -1,28 +1,40 @@
-<div class="switch-map-list-container" *ngIf="this.searchResultList.length > 1">
+@if (this.searchResultList.length > 1) {
+  <div class="switch-map-list-container">
     <nz-option-group class="switch-map-list">
-        <button  nz-button class="map-button left"
+      <button  nz-button class="map-button left"
         [ngClass]="{'selected': selectedButton === 'karte'}"
-        (click)="selectedButton = 'karte'">Karte</button>
-        <button  nz-button class="map-button right"
+      (click)="selectedButton = 'karte'">Karte</button>
+      <button  nz-button class="map-button right"
         [ngClass]="{'selected': selectedButton === 'liste'}"
-        (click)="selectedButton = 'liste'">Liste</button>
+      (click)="selectedButton = 'liste'">Liste</button>
     </nz-option-group>
-</div>
+  </div>
+}
 <div class="map" id="map-repair">
-    <div id="search-results" class="results">
-        <div *ngIf="this.searchResultList.length === 1 && selectedButton === 'liste'" class="single-result-container"  [ngClass]="{
+  <div id="search-results" class="results">
+    @if (this.searchResultList.length === 1 && selectedButton === 'liste') {
+<div class="single-result-container"  [ngClass]="{
         'pink-background': this.searchResultList[0].type === 'Handwerksbetrieb',
         'orange-background': this.searchResultList[0].type === 'Reparaturcafé'}">
-            <app-profile-card class="profile-card" [searchResult]="this.searchResultList[0]" [clickedCard]="true" (closeEvent)="this.resetDisplayedResult()"/>
-        </div>
-        <div *ngIf="this.searchResultList.length > 1" id="multiple-result-container" class="multiple-result-container desktop">
-            <app-profile-card *ngFor="let item of this.searchResultList" [id]="'profile-' + item.title" class="profile-card" [closable]="false" [clickedCard]="clickedElementIdDesktop === ('profile-' + item.title) " [searchResult]="item"
+        <app-profile-card class="profile-card" [searchResult]="this.searchResultList[0]" [clickedCard]="true" (closeEvent)="this.resetDisplayedResult()"/>
+      </div>
+    }
+    @if (this.searchResultList.length > 1) {
+      <div id="multiple-result-container" class="multiple-result-container desktop">
+        @for (item of this.searchResultList; track item) {
+          <app-profile-card [id]="'profile-' + item.title" class="profile-card" [closable]="false" [clickedCard]="clickedElementIdDesktop === ('profile-' + item.title) " [searchResult]="item"
             [ngClass]="{
             'pink-background': this.searchResultList[0].type === 'Handwerksbetrieb',
             'orange-background': this.searchResultList[0].type === 'Reparaturcafé'}"/>
-        </div>
-        <div *ngIf="this.searchResultList.length > 1 && selectedButton === 'liste'" id="multiple-result-container-mobile" class="multiple-result-container mobile">
-            <app-profile-card *ngFor="let item of this.searchResultList" [id]="'profile-' + item.title + '-mobile'" class="profile-card" [closable]="false" [clickedCard]="clickedElementId === ('profile-' + item.title + '-mobile') " [searchResult]="item"/>
-        </div>
-    </div>
+        }
+      </div>
+    }
+    @if (this.searchResultList.length > 1 && selectedButton === 'liste') {
+      <div id="multiple-result-container-mobile" class="multiple-result-container mobile">
+        @for (item of this.searchResultList; track item) {
+          <app-profile-card [id]="'profile-' + item.title + '-mobile'" class="profile-card" [closable]="false" [clickedCard]="clickedElementId === ('profile-' + item.title + '-mobile') " [searchResult]="item"/>
+        }
+      </div>
+    }
+  </div>
 </div>

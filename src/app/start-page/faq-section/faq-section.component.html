@@ -1,10 +1,14 @@
-<div class="faq-container" *ngIf="faqSection">
+@if (faqSection) {
+  <div class="faq-container">
     <div class="section">
-        <h2>{{'FAQ.title' | translate}}</h2>
-        <nz-collapse nzGhost [nzBordered]="false" [nzExpandIconPosition]="'end'" *ngFor="let faq of faqSection">
-            <nz-collapse-panel [nzHeader]="faq.Frage" >
-                <div [innerHTML]="faq.Antwort"></div>
-            </nz-collapse-panel>
+      <h2>{{'FAQ.title' | translate}}</h2>
+      @for (faq of faqSection; track faq) {
+        <nz-collapse nzGhost [nzBordered]="false" [nzExpandIconPosition]="'end'">
+          <nz-collapse-panel [nzHeader]="faq.Frage" >
+            <div [innerHTML]="faq.Antwort"></div>
+          </nz-collapse-panel>
         </nz-collapse>
+      }
     </div>
-</div>
+  </div>
+}

@@ -27,7 +27,7 @@
               id="password"
               formControlName="password"
               (ngModelChange)="updateConfirmValidator()"
-            />
+              />
             <ng-template #errorTpl let-control>
               @if (control.errors?.['minlength']) {
                 Das Passwort muss aus mindestens 8 Zeichen bestehen!
@@ -84,11 +84,17 @@
         <nz-form-item nz-row>
           <div></div>
           <nz-form-control >
-            <button nz-button class="button" [disabled]="isSubmitting" nzType="primary">{{ 'registration.registerButton' | translate }}<span *ngIf="!isSubmitting" class="icon-container" nz-icon nzType="right" nzTheme="outline"></span><span *ngIf="isSubmitting" nz-icon nzType="loading" nzTheme="outline"></span></button>
+            <button nz-button class="button" [disabled]="isSubmitting" nzType="primary">{{ 'registration.registerButton' | translate }}@if (!isSubmitting) {
+              <span class="icon-container" nz-icon nzType="right" nzTheme="outline"></span>
+              }@if (isSubmitting) {
+              <span nz-icon nzType="loading" nzTheme="outline"></span>
+            }</button>
           </nz-form-control>
         </nz-form-item>
       </div>
     </div>
   </form>
 </div>
-<participate-section *ngIf="participateSection" [participateSection]="participateSection"></participate-section>
+@if (participateSection) {
+  <participate-section [participateSection]="participateSection"></participate-section>
+}

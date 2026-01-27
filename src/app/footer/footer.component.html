@@ -1,32 +1,37 @@
 <div class="footer-container">
-  <div *ngIf="footerLinks" class="footer-section">
-    <div class="footer-left">
-      <img class="repami-logo" src="../../assets/logo_repami.svg"
-        alt="{{'accessibility.altLogo' | translate}}" />
-      <div class="sponsor">
-        {{'footer.sponsoredBy' | translate}}
-        <img class="senat-logo" src="../../assets/senatsLogo.svg"
-          alt="{{'accessibility.altLogoSenate' | translate}}" />
+  @if (footerLinks) {
+    <div class="footer-section">
+      <div class="footer-left">
+        <img class="repami-logo" src="../../assets/logo_repami.svg"
+          alt="{{'accessibility.altLogo' | translate}}" />
+        <div class="sponsor">
+          {{'footer.sponsoredBy' | translate}}
+          <img class="senat-logo" src="../../assets/senatsLogo.svg"
+            alt="{{'accessibility.altLogoSenate' | translate}}" />
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-sitemap-container">
+          @for (link of footerLinks; track link) {
+            <a [routerLink]="[link.attributes?.Link]"
+              title="{{'accessibility.titleNavigation' | translate}} {{ link.attributes?.Title }}">
+              {{ link.attributes?.Title }}
+            </a>
+          }
+          <a href="#faq" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-right mobile">
+        <div class="footer-sitemap-container">
+          @for (link of footerLinks; track link) {
+            <a [routerLink]="[link.attributes?.Link]"
+            title="{{'accessibility.titleNavigation' | translate}} {{ link.attributes?.Title }}">{{ link.attributes?.Title }}</a>
+          }
+          <a href="#faq" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
+        </div>
       </div>
     </div>
-    <div class="footer-right">
-      <div class="footer-sitemap-container">
-        <a *ngFor="let link of footerLinks" [routerLink]="[link.attributes?.Link]"
-          title="{{'accessibility.titleNavigation' | translate}} {{ link.attributes?.Title }}">
-          {{ link.attributes?.Title }}
-        </a>
-        <a href="#faq" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
-      </div>
-    </div>
-
-    <div class="footer-right mobile">
-      <div class="footer-sitemap-container">
-        <a *ngFor="let link of footerLinks" [routerLink]="[link.attributes?.Link]"
-          title="{{'accessibility.titleNavigation' | translate}} {{ link.attributes?.Title }}">{{ link.attributes?.Title }}</a>
-        <a href="#faq" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
-      </div>
-    </div>
-  </div>
+  }
   <hr />
   <div class="footer-hyperlinks-container">
     <span routerLink="/kontakt" title="{{'accessibility.titleNavigation' | translate}} {{'footer.contactLink' | translate}}">{{'footer.contactLink' | translate}}</span>

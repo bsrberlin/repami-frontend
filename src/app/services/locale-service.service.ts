@@ -37,7 +37,7 @@ export class LocaleService {
         locale: locale
       }).subscribe(res => {
         const page = res.data && res.data.length > 0 ? res.data.find(item => item.attributes?.Path === pathName) : undefined;
-        observer.next(page);
+        if(page) observer.next(page);
         observer.complete();
       });
     });
