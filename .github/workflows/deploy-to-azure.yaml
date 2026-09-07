@@ -32,5 +32,5 @@ jobs:
             ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}/repami-frontend:latest
           build-args: |
             STRAPI_URL=${{ secrets.STRAPI_URL }}
-            GA_MEASUREMENT_ID=${{ secrets.GA_MEASUREMENT_ID }}
-            USERCENTRICS_SETTINGS_ID=${{ secrets.USERCENTRICS_SETTINGS_ID }}
+            GA_MEASUREMENT_ID=${{ vars.GA_MEASUREMENT_ID }}
+            USERCENTRICS_SETTINGS_ID=${{ vars.USERCENTRICS_SETTINGS_ID }}
