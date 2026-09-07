@@ -12,8 +12,8 @@ export class GoogleAnalyticsService {
 
     private initGoogleAnalytics() {
         const tag = `
-        <script async type="text/plain" data-usercentrics="Google Analytics" src="https://www.googletagmanager.com/gtag/js?id=${environment.gaMeasurementId}"></script>
-        <script type="text/plain" data-usercentrics="Google Analytics">
+        <script async type="text/plain" data-usercentrics="${environment.usercentricsGtmServiceName}" src="https://www.googletagmanager.com/gtag/js?id=${environment.gaMeasurementId}"></script>
+        <script type="text/plain" data-usercentrics="${environment.usercentricsGtmServiceName}">
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());

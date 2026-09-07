@@ -3,4 +3,5 @@ export const environment = {
     strapiUrl: 'http://localhost:1337',
     gaMeasurementId: 'G-xxx',
     usercentricsSettingsId: 'Raxxx',
+    usercentricsGtmServiceName: 'Google Tag Manager',
 };
