@@ -43,6 +43,18 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+### Build-time Environment Variables
+
+The following variables are injected at build time via `custom-webpack.config.ts` (passed as Docker build args in `Dockerfile`, `bitbucket-pipelines.yml` and `.github/workflows/deploy-to-azure.yaml`):
+
+| Variable | Description |
+| --- | --- |
+| `STRAPI_URL` | Base URL of the Strapi backend |
+| `GA_MEASUREMENT_ID` | Google Analytics (gtag.js) measurement ID, e.g. `G-XXXXXXX` |
+| `USERCENTRICS_SETTINGS_ID` | Usercentrics settings ID (the "container" ID `Ra3t4aw78f-xeC`, not the global template ID) used for the consent management banner |
+
+For local development, these values are set directly in `src/environments/environment.development.ts`.
+
 ## Running Unit Tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
