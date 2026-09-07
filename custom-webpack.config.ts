@@ -11,7 +11,8 @@ export default (
     new webpack.DefinePlugin({
       $ENV: {
         STRAPI_URL: JSON.stringify(process.env['STRAPI_URL']),
-        MATOMO_SITE_ID: JSON.stringify(process.env['MATOMO_SITE_ID'])
+        GA_MEASUREMENT_ID: JSON.stringify(process.env['GA_MEASUREMENT_ID']),
+        USERCENTRICS_SETTINGS_ID: JSON.stringify(process.env['USERCENTRICS_SETTINGS_ID'])
       },
     })
   );

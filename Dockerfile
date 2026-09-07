@@ -1,7 +1,8 @@
 # Buildstage
 FROM node:20-alpine as angular
 ARG STRAPI_URL
-ARG MATOMO_SITE_ID
+ARG GA_MEASUREMENT_ID
+ARG USERCENTRICS_SETTINGS_ID
 WORKDIR /ng-app
 COPY package*.json ./
 RUN npm ci

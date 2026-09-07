@@ -11,14 +11,14 @@ import { NavigationselementService } from './api/services';
 import { LocaleService } from './services/locale-service.service';
 import { ParticipateSectionComponent } from './start-page/participate-section/participate-section.component';
 import { SharedService } from './services/shared.service';
-import { MatomoService } from './services/matomo.service';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
 
 @Component({
-    selector: 'app-root',
-    imports: [ApiModule, AllImportsModule, HeaderComponent, FooterComponent, ParticipateSectionComponent],
-    providers: [StrapiProvidersModule],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.less'
+  selector: 'app-root',
+  imports: [ApiModule, AllImportsModule, HeaderComponent, FooterComponent, ParticipateSectionComponent],
+  providers: [StrapiProvidersModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.less'
 })
 
 export class AppComponent implements OnInit {
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     private sharedService: SharedService,
     private _navigationselementService: NavigationselementService,
     private _localeService: LocaleService,
-    private matomoService: MatomoService
+    private googleAnalyticsService: GoogleAnalyticsService
   ) {
     this.listenToLanguageChange();
   }
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // track pageview
-        this.matomoService.trackPageView(this.router.url);
+        this.googleAnalyticsService.trackPageView(this.router.url);
       }
       if (!(event instanceof NavigationEnd)) {
         return;
