@@ -131,7 +131,7 @@ export class RegistrationPageComponent {
           });
         },
         error: (error) => {
-          if (error.status === 400 && error.error) {
+          if (error.error) {
             const errMsg = error.error.error.message;
             if (errMsg === 'Email or Username are already taken') {
               this.registerForm.controls.email.setErrors({ emailTaken: true });
