@@ -27,6 +27,15 @@ export class HeaderComponent {
   isLoggedIn: boolean = false;
   isCustomSites: boolean = false;
 
+  get showSearch(): boolean {
+    return !this.router.isActive('/faq', {
+      paths: 'exact',
+      queryParams: 'ignored',
+      fragment: 'ignored',
+      matrixParams: 'ignored'
+    });
+  }
+
   constructor(
     private navService: NavigationselementService,
     private http: HttpClient,

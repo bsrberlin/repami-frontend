@@ -4,11 +4,12 @@
       <img src="../../assets/logo_repami.svg" alt="{{'accessibility.altLogo' | translate}}"
         title="{{'navElement.logo' | translate}}">
     </div>
-    <div class="header-search" [ngClass]="{ 'fixed': isNavbarFixed }">
-      <searchbar class="searchbar mobile" [showSearchButton]="false"></searchbar>
-      <searchbar class="searchbar tablet" [showSearchButton]="true"></searchbar>
-
-    </div>
+    @if (showSearch) {
+      <div class="header-search" [ngClass]="{ 'fixed': isNavbarFixed }">
+        <searchbar class="searchbar mobile" [showSearchButton]="false"></searchbar>
+        <searchbar class="searchbar tablet" [showSearchButton]="true"></searchbar>
+      </div>
+    }
     <div class="nav-elements-container">
       @for (navElement of navigationElements; track navElement) {
         <p class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" [routerLink]="[navElement.attributes?.Link]"
@@ -104,7 +105,7 @@
   </div>
 </div>
 </div>
-@if (isCustomSites) {
+@if (isCustomSites && showSearch) {
   <div class="search-bar-container">
     <searchbar class="searchbar tablet" [showSearchButton]="true"></searchbar>
     <searchbar class="searchbar mobile" [showSearchButton]="false"></searchbar>
