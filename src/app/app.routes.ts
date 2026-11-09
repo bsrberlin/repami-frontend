@@ -7,9 +7,11 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { StaticPageComponent } from './custom-pages/static-page/static-page.component';
 import { RepairProfileEditPageComponent } from './repair-profile-edit-page/repair-profile-edit-page.component';
 import { AuthGuard } from './services/auth.guard';
+import { FAQPageComponent } from './faq-page/faq-page.component';
 
 export const routes: Routes = [
   { path: '', component: StartPageComponent },
+  { path: 'faq', component: FAQPageComponent },
   { path: 'test', component: TestPageComponent },
   { path: 'register', component: RegistrationPageComponent },
   { path: 'login', component: LoginPageComponent },

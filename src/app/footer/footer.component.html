@@ -18,7 +18,7 @@
               {{ link.attributes?.Title }}
             </a>
           }
-          <a href="#faq" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
+          <a routerLink="/faq" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
         </div>
       </div>
       <div class="footer-right mobile">
@@ -27,7 +27,7 @@
             <a [routerLink]="[link.attributes?.Link]"
             title="{{'accessibility.titleNavigation' | translate}} {{ link.attributes?.Title }}">{{ link.attributes?.Title }}</a>
           }
-          <a href="#faq" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
+          <a routerLink="/faq" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
         </div>
       </div>
     </div>

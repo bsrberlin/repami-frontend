@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnChanges } from '@angular/core'
 import { AllImportsModule } from '../../all-imports.module';
 import { marked } from 'marked';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -11,10 +11,10 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 
 
-export class FAQSectionComponent implements OnInit{
+export class FAQSectionComponent implements OnChanges{
   @Input() faqSection!: { id?: number | undefined; Frage?: string | undefined; Antwort?: string | undefined; }[] | undefined;
 
-  async ngOnInit() {
+  async ngOnChanges() {
     await this.preprocessFaqSection();
   }
 

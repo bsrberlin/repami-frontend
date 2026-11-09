@@ -7,7 +7,6 @@ import { RepairSectionComponent } from './repair-section/repair-section.componen
 import { ReasonSectionComponent } from './reason-section/reason-section.component';
 import { ParticipateSectionComponent } from './participate-section/participate-section.component';
 import { FooterComponent } from '../footer/footer.component';
-import { FAQSectionComponent } from './faq-section/faq-section.component';
 import { MapSectionComponent } from './map-section/map-section.component';
 import { StartseiteService } from '../api/services';
 import { HeaderHeaderSektionComponent, NavigationselementListResponseDataItem, StartpageAnleitungSektionComponent, StartpageGruendeSektionComponent, StartpageMitmachenSektionComponent, StartpageReperaturSektionComponent } from '../api/models';
@@ -25,7 +24,6 @@ import { Title } from '@angular/platform-browser';
         SearchbarComponent,
         RepairSectionComponent,
         ReasonSectionComponent,
-        FAQSectionComponent,
         ParticipateSectionComponent,
         FooterComponent
     ],
@@ -49,7 +47,6 @@ export class StartPageComponent {
   instructionSection!: StartpageAnleitungSektionComponent | undefined;
   repairSection!: StartpageReperaturSektionComponent | undefined;
   reasonSection!: StartpageGruendeSektionComponent | undefined;
-  faqSection!: { id?: number | undefined; Frage?: string | undefined; Antwort?: string | undefined; }[] | undefined;
   participateSection!: StartpageMitmachenSektionComponent | undefined;
 
   footerLinks!: NavigationselementListResponseDataItem[];
@@ -77,7 +74,7 @@ export class StartPageComponent {
 
   async getStartseiteData() {
     this._startSeiteService.getStartseites({
-      populate: `${this.propertiesToPopulateHeader}, Anleitung, ${this.propertiesToPopulateRepair}, ${this.propertiesToPopulateReason}, FAQ.FAQ, Mitmachen`,
+      populate: `${this.propertiesToPopulateHeader}, Anleitung, ${this.propertiesToPopulateRepair}, ${this.propertiesToPopulateReason}, Mitmachen`,
       locale: this._localeService.localeCode
     }).subscribe(res => {
       if (Array.isArray(res.data) && res.data.length > 0) {
@@ -87,7 +84,6 @@ export class StartPageComponent {
         this.instructionSection = data.attributes?.Anleitung;
         this.repairSection = data.attributes?.Reperatur;
         this.reasonSection = data.attributes?.Gruende;
-        this.faqSection = data.attributes?.FAQ?.FAQ;
         this.participateSection = data.attributes?.Mitmachen;
       }
     });
