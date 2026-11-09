@@ -16,7 +16,6 @@
           {{ navElement.attributes?.Title }}
         </p>
       }
-      <a routerLink="/faq" class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
       <div class="lang" [ngClass]="{ 'fixed': isNavbarFixed }">
         <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
           <span nz-icon nzType="global" title="{{'accessibility.titleLanguages' | translate}}"></span>
@@ -68,7 +67,6 @@
                 {{ navElement.attributes?.Title }}
               </p>
             }
-            <a routerLink="/faq" (click)="toggleDrawer()" title="{{'accessibility.titleFAQ' | translate}}">FAQ</a>
           </div>
           <div class="footer-part">
             <div class="socials">
