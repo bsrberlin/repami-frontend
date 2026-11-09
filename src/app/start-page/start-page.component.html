@@ -2,6 +2,9 @@
   @if (startElementsHeader) {
     <app-header-section [startElementsHeader]="startElementsHeader"></app-header-section>
   }
+  @if (participateSection) {
+    <participate-section [participateSection]="participateSection"></participate-section>
+  }
   <map-section></map-section>
   <instructions-section [instructionSection]="instructionSection"></instructions-section>
   @if (repairSection) {
@@ -16,7 +19,4 @@
       <faq-section [faqSection]="faqSection"></faq-section>
     }
   </div>
-  @if (participateSection) {
-    <participate-section [participateSection]="participateSection"></participate-section>
-  }
 </div>
