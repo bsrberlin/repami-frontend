@@ -11,6 +11,14 @@
       </div>
     }
     <div class="nav-elements-container">
+      <a class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" href="#map-repair"
+        title="{{'accessibility.titleNavigation' | translate}} Reparatur finden">
+        Reparatur finden
+      </a>
+      <a class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" routerLink="/register"
+        title="{{'accessibility.titleNavigation' | translate}} Betrieb registrieren">
+        Betrieb registrieren
+      </a>
       @for (navElement of navigationElements; track navElement) {
         <p class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" [routerLink]="[navElement.attributes?.Link]"
           title="{{'accessibility.titleNavigation' | translate}} {{ navElement.attributes?.Title }}">
@@ -60,7 +68,8 @@
       <div class="drawer-container" [ngClass]="{ 'visible': visible }">
         <div class="part">
           <div class="items">
-            <a href="#map-repair" (click)="toggleDrawer()">{{'navElement.findRepair' | translate}}</a>
+            <a href="#map-repair" (click)="toggleDrawer()">Reparatur finden</a>
+            <a routerLink="/register" (click)="toggleDrawer()">Betrieb registrieren</a>
             @for (navElement of navigationElements; track navElement) {
               <p [routerLink]="[navElement.attributes?.Link]"
                 (click)="toggleDrawer()"
