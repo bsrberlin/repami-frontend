@@ -114,7 +114,7 @@ export class RegistrationPageComponent {
         next: (res) => {
           Swal.fire({
             icon: 'success',
-            title: 'Das hat geklappt!',
+            title: 'Toll, dass du dabei bist!',
             text: 'Wir haben dir einen Link an die angegebene Mailadresse geschickt, mit dem du deinen Account bestätigen kannst. Prüfe bitte auch deinen Spam-Ordner.',
           }).finally(() => {
             this.router.navigate(['/']);
