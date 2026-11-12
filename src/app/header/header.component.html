@@ -19,6 +19,14 @@
         title="{{'accessibility.titleNavigation' | translate}} Betrieb registrieren">
         Betrieb registrieren
       </a>
+      <a class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" routerLink="/reparaturtipps"
+        title="{{'accessibility.titleNavigation' | translate}} Reparaturtipps">
+        Reparaturtipps
+      </a>
+      <a class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" routerLink="/login"
+        title="{{'accessibility.titleNavigation' | translate}} Anmelden">
+        Anmelden
+      </a>
       @for (navElement of navigationElements; track navElement) {
         <p class="nav-element" [ngClass]="{ 'fixed': isNavbarFixed }" [routerLink]="[navElement.attributes?.Link]"
           title="{{'accessibility.titleNavigation' | translate}} {{ navElement.attributes?.Title }}">
@@ -69,7 +77,9 @@
         <div class="part">
           <div class="items">
             <a href="#map-repair" (click)="toggleDrawer()">Reparatur finden</a>
+            <a routerLink="/reparaturtipps" (click)="toggleDrawer()">Reparaturtipps</a>
             <a routerLink="/register" (click)="toggleDrawer()">Betrieb registrieren</a>
+            <a routerLink="/login" (click)="toggleDrawer()">Anmelden</a>
             @for (navElement of navigationElements; track navElement) {
               <p [routerLink]="[navElement.attributes?.Link]"
                 (click)="toggleDrawer()"
