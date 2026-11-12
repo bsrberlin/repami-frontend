@@ -17,6 +17,8 @@
       </div>
       <div class="footer-right">
         <div class="footer-sitemap-container">
+          <a routerLink="/reparaturbonus" title="{{'accessibility.titleNavigation' | translate}} ReparaturBONUS">ReparaturBONUS</a>
+          <a routerLink="/ueber-uns" title="{{'accessibility.titleNavigation' | translate}} Über uns">Über uns</a>
           @for (link of footerLinks; track link) {
             <a [routerLink]="[link.attributes?.Link]"
               title="{{'accessibility.titleNavigation' | translate}} {{ link.attributes?.Title }}">
@@ -28,6 +30,8 @@
       </div>
       <div class="footer-right mobile">
         <div class="footer-sitemap-container">
+          <a routerLink="/reparaturbonus" title="{{'accessibility.titleNavigation' | translate}} ReparaturBONUS">ReparaturBONUS</a>
+          <a routerLink="/ueber-uns" title="{{'accessibility.titleNavigation' | translate}} Über uns">Über uns</a>
           @for (link of footerLinks; track link) {
             <a [routerLink]="[link.attributes?.Link]"
             title="{{'accessibility.titleNavigation' | translate}} {{ link.attributes?.Title }}">{{ link.attributes?.Title }}</a>
