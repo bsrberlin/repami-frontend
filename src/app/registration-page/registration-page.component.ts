@@ -11,20 +11,14 @@ import {
 } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import {
-  StartseiteService,
-  UsersPermissionsAuthService,
-} from '../api/services';
-import { ParticipateSectionComponent } from '../start-page/participate-section/participate-section.component';
-import { LocaleService } from '../services/locale-service.service';
-import { StartpageMitmachenSektionComponent } from '../api/models';
+import { UsersPermissionsAuthService } from '../api/services';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'registration-page',
     templateUrl: './registration-page.component.html',
     styleUrl: './registration-page.component.less',
-    imports: [AllImportsModule, ParticipateSectionComponent, TranslatePipe]
+    imports: [AllImportsModule, TranslatePipe]
 })
 export class RegistrationPageComponent {
   registerForm: FormGroup<{
@@ -34,15 +28,12 @@ export class RegistrationPageComponent {
     terms: FormControl<boolean>;
     criteria: FormControl<boolean>;
   }>;
-  participateSection!: StartpageMitmachenSektionComponent | undefined;
   isSubmitting = false;
 
   constructor(
     private fb: NonNullableFormBuilder,
     private router: Router,
     private userService: UsersPermissionsAuthService,
-    private _startSeiteService: StartseiteService,
-    private _localeService: LocaleService
   ) {
     this.registerForm = this.fb.group({
       email: [
@@ -61,7 +52,6 @@ export class RegistrationPageComponent {
       terms: [false, Validators.requiredTrue],
       criteria: [false, Validators.requiredTrue],
     });
-    this.getStartseiteData();
   }
 
   emailTldValidator(): ValidatorFn {
@@ -156,17 +146,4 @@ export class RegistrationPageComponent {
       });
   }
 
-  async getStartseiteData() {
-    this._startSeiteService
-      .getStartseites({
-        populate: 'Mitmachen',
-        locale: this._localeService.localeCode,
-      })
-      .subscribe((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          const data = res.data[0];
-          this.participateSection = data.attributes?.Mitmachen;
-        }
-      });
-  }
 }
