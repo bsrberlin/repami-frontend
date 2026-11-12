@@ -29,6 +29,7 @@
   .footer-left {
     display: flex;
     align-items: center;
+    flex-direction: column;
 
     .sponsor {
       font-size: 16px;
@@ -37,7 +38,7 @@
       margin-left: 50px;
 
       img {
-        height: 55px;
+        height: 40px;
       }
 
       .logos {
@@ -45,7 +46,7 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        gap: 65px;
+        gap: 50px;
         margin-bottom: 70px;
         margin-top: 20px;
       }
@@ -53,7 +54,6 @@
     }
 
     @media only screen and (max-width: @screen-lg) {
-      flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
 
@@ -62,13 +62,17 @@
       }
     }
 
-    @media only screen and (max-width: @screen-md) {
+    @media only screen and (max-width: @screen-sm) {
       align-items: center;
 
       .sponsor {
         text-align: center;
         margin-left: unset;
         margin-bottom: 36px;
+      }
+
+      .logos {
+        flex-direction: column;
       }
     }
   }
