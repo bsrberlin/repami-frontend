@@ -9,17 +9,13 @@ import {
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import {
-  StartseiteService,
   UsersPermissionsAuthService,
 } from '../api/services';
-import { LocaleService } from '../services/locale-service.service';
-import { StartpageMitmachenSektionComponent } from '../api/models';
-import { ParticipateSectionComponent } from '../start-page/participate-section/participate-section.component';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'login-page',
-    imports: [AllImportsModule, ParticipateSectionComponent, TranslatePipe],
+    imports: [AllImportsModule, TranslatePipe],
     templateUrl: './login-page.component.html',
     styleUrl: './login-page.component.less'
 })
@@ -28,20 +24,15 @@ export class LoginPageComponent {
     email: FormControl<string>;
     password: FormControl<string>;
   }>;
-  participateSection!: StartpageMitmachenSektionComponent | undefined;
-
   constructor(
     private fb: NonNullableFormBuilder,
     private router: Router,
     private userService: UsersPermissionsAuthService,
-    private _startSeiteService: StartseiteService,
-    private _localeService: LocaleService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required]],
     });
-    this.getStartseiteData();
   }
 
   submitForm(): void {
@@ -83,17 +74,4 @@ export class LoginPageComponent {
       );
   }
 
-  async getStartseiteData() {
-    this._startSeiteService
-      .getStartseites({
-        populate: 'Mitmachen',
-        locale: this._localeService.localeCode,
-      })
-      .subscribe((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          const data = res.data[0];
-          this.participateSection = data.attributes?.Mitmachen;
-        }
-      });
-  }
 }
