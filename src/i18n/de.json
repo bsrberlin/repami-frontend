@@ -68,6 +68,8 @@
       "uploadHint": "Du kannst bis zu 5 Dateien (.png, .jpg, .jpeg) mit einer Größe von max. 2MB hochladen",
       "name": "Name des Betriebs",
       "companyNo": "Betriebsnummer (Wird nicht veröffentlicht)",
+      "registerType": "Registerart (Wird nicht veröffentlicht)",
+      "registerTypePlaceholder": "Bitte auswählen",
       "description": "Beschreibungstext",
       "address": "Straße und Hausnummer",
       "postCode": "PLZ",

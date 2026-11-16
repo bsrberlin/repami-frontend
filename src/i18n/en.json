@@ -68,6 +68,8 @@
       "uploadHint": "You can upload up to 5 files (.png, .jpg, .jpeg)",
       "name": "Name",
       "companyNo": "Repair No. (will not be published)",
+      "registerType": "Register type (will not be published)",
+      "registerTypePlaceholder": "Please select",
       "description": "Description",
       "address": "Address",
       "postCode": "Postcode",

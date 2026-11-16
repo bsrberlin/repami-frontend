@@ -41,6 +41,19 @@
       <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
         <input nz-input required formControlName="CompanyNo"/>
       </nz-form-control>
+      <nz-form-label class="required" nzFor="Registerart"><span>{{ "repairProfile.edit.registerType" | translate}}:<span class="asteriks">*</span></span></nz-form-label>
+      <nz-form-control [nzErrorTip]="('repairProfile.edit.emptyInputError' | translate)">
+        <nz-select
+          formControlName="Registerart"
+          nzId="Registerart"
+          nzMode="multiple"
+          nzPlacement="bottomLeft"
+          [nzPlaceHolder]="('repairProfile.edit.registerTypePlaceholder' | translate)">
+          @for (option of registerTypeOptions; track option) {
+            <nz-option [nzLabel]="option" [nzValue]="option"></nz-option>
+          }
+        </nz-select>
+      </nz-form-control>
       <div class="repair-profile-container">
         <p class="repair-profile-description">
           <nz-form-label class="required" nzFor="Description"><span>{{ "repairProfile.edit.description" | translate}}:<span class="asteriks">*</span></span></nz-form-label>

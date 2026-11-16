@@ -5,6 +5,7 @@ export interface ReparaturbetriebRequest {
 'createdByReaperaturbetrieb'?: boolean;
 'Name': string;
 'CompanyNo': string;
+'Registerart'?: Array<'Handelsregister' | 'Gewerberegister' | 'Handwerksrolle'>;
 'Image'?: Array<(number | string)>;
 'Description': string;
 'Address': string;

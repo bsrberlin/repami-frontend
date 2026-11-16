@@ -37,6 +37,11 @@ export class RepairProfileEditPageComponent implements OnInit {
   selectedOptions: ProductCategoryListResponseDataItem[] = [];
   productCategoriesOptions: ProductCategoryListResponseDataItem[] | undefined =
     [];
+  readonly registerTypeOptions = [
+    'Handelsregister',
+    'Gewerberegister',
+    'Handwerksrolle',
+  ] as const;
 
   profileIsPublished: boolean = false;
   profileExists: boolean = false;
@@ -50,6 +55,7 @@ export class RepairProfileEditPageComponent implements OnInit {
       Image: number[] | undefined;
       Name: string | undefined;
       CompanyNo: string | undefined;
+      Registerart: string[] | undefined;
       Description: string | undefined;
       Address: string | undefined;
       PLZ: string | undefined;
@@ -84,6 +90,7 @@ export class RepairProfileEditPageComponent implements OnInit {
       image: [],
       Name: ['', Validators.required],
       CompanyNo: ['', Validators.required],
+      Registerart: [[], Validators.required],
       Description: ['', Validators.required],
       Address: ['', [Validators.required]],
       PLZ: ['', [Validators.required]],
@@ -106,6 +113,7 @@ export class RepairProfileEditPageComponent implements OnInit {
         Image: undefined,
         Name: undefined,
         CompanyNo: undefined,
+        Registerart: undefined,
         Description: undefined,
         Address: undefined,
         PLZ: undefined,
@@ -170,6 +178,10 @@ export class RepairProfileEditPageComponent implements OnInit {
           this.uploadedImageIds.push(image.id);
         }
         this.uploadCounter = this.initFileList.length;
+      } else if (field == 'Registerart') {
+        this.reperaturProfileForm.controls[field].patchValue(
+          this.parseRegisterart(fieldValue)
+        );
       } else if (this.reperaturProfileForm.controls[field]) {
         this.reperaturProfileForm.controls[field].patchValue(fieldValue!);
       }
@@ -209,6 +221,23 @@ export class RepairProfileEditPageComponent implements OnInit {
     }
 
     this.changesFromExistingProfile = hasChanges;
+  }
+
+  // The multi-select plugin's default value is the string "[]", so values may arrive as JSON strings.
+  parseRegisterart(value: unknown): string[] {
+    let parsed = value;
+    if (typeof parsed === 'string') {
+      try {
+        parsed = JSON.parse(parsed);
+      } catch {
+        return [];
+      }
+    }
+    return Array.isArray(parsed)
+      ? parsed.filter((v): v is string =>
+          (this.registerTypeOptions as readonly string[]).includes(v)
+        )
+      : [];
   }
 
   arraysEqual(a: any[], b: any[]) {
@@ -354,6 +383,8 @@ export class RepairProfileEditPageComponent implements OnInit {
     this.reqBody.data.Name = this.reperaturProfileForm.controls['Name'].value;
     this.reqBody.data.CompanyNo =
       this.reperaturProfileForm.controls['CompanyNo'].value;
+    this.reqBody.data.Registerart =
+      this.reperaturProfileForm.controls['Registerart'].value;
     this.reqBody.data.Description =
       this.reperaturProfileForm.controls['Description'].value;
     this.reqBody.data.Address =

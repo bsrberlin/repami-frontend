@@ -4,6 +4,7 @@ export interface Reparaturbetrieb {
   Address: string;
   BrandsandModels?: string;
   CompanyNo: string;
+  Registerart?: Array<'Handelsregister' | 'Gewerberegister' | 'Handwerksrolle'>;
   Description: string;
   EMail: string;
   Image?: {
