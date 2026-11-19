@@ -33,19 +33,6 @@
           {{ navElement.attributes?.Title }}
         </p>
       }
-      <div class="lang" [ngClass]="{ 'fixed': isNavbarFixed }">
-        <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-          <span nz-icon nzType="global" title="{{'accessibility.titleLanguages' | translate}}"></span>
-        </div>
-        <nz-dropdown-menu #menu="nzDropdownMenu">
-          <ul nz-menu>
-            @for (language of languages; track language) {
-              <li nz-menu-item (click)="changeLanguage(language)">{{ language.code }}
-              </li>
-            }
-          </ul>
-        </nz-dropdown-menu>
-      </div>
       <div class="lang profile" [ngClass]="{ 'fixed': isNavbarFixed }">
         <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="profileMenu">
           <span nz-icon nzType="user" nzTheme="outline" title="{{'accessibility.titleMember' | translate}}"></span>
