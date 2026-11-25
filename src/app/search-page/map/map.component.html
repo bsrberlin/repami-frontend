@@ -14,7 +14,7 @@
   <div id="search-results" class="results">
     @if (this.searchResultList.length === 1 && selectedButton === 'liste') {
 <div class="single-result-container"  [ngClass]="{
-        'pink-background': this.searchResultList[0].type === 'Handwerksbetrieb',
+        'pink-background': this.searchResultList[0].type !== 'Reparaturcafé',
         'orange-background': this.searchResultList[0].type === 'Reparaturcafé'}">
         <app-profile-card class="profile-card" [searchResult]="this.searchResultList[0]" [clickedCard]="true" (closeEvent)="this.resetDisplayedResult()"/>
       </div>
@@ -24,7 +24,7 @@
         @for (item of this.searchResultList; track item) {
           <app-profile-card [id]="'profile-' + item.title" class="profile-card" [closable]="false" [clickedCard]="clickedElementIdDesktop === ('profile-' + item.title) " [searchResult]="item"
             [ngClass]="{
-            'pink-background': this.searchResultList[0].type === 'Handwerksbetrieb',
+            'pink-background': this.searchResultList[0].type !== 'Reparaturcafé',
             'orange-background': this.searchResultList[0].type === 'Reparaturcafé'}"/>
         }
       </div>

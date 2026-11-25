@@ -1,7 +1,7 @@
 <nz-card class="profile-card" [nzBordered]="false"
          [ngClass]="{
     'white-backround': !clickedCard,
-    'pink-background': clickedCard && searchResult.type === 'Handwerksbetrieb',
+    'pink-background': clickedCard && searchResult.type !== 'Reparaturcafé',
     'orange-background': clickedCard && searchResult.type === 'Reparaturcafé'
   }"
   >
@@ -15,14 +15,16 @@
   <div class="info">
     <nz-tag class="tag desktop" [ngClass]="{
     'repairCafe': searchResult.type === 'Reparaturcafé',
-    'craftBusiness': searchResult.type === 'Handwerksbetrieb'
+    'craftBusiness': searchResult.type === 'Handwerksbetrieb',
+    'repairBusiness': searchResult.type === 'Reparaturbetrieb'
     }"
     >{{searchResult.type}}</nz-tag>
     <h4>{{searchResult.title}}</h4>
     <nz-tag class="tag tablet"
             [ngClass]="{
     'repairCafe': searchResult.type === 'Reparaturcafé',
-    'craftBusiness': searchResult.type === 'Handwerksbetrieb'
+    'craftBusiness': searchResult.type === 'Handwerksbetrieb',
+    'repairBusiness': searchResult.type === 'Reparaturbetrieb'
     }">{{searchResult.type}}</nz-tag>
   </div>
   <div class="extra-info-container">
@@ -41,10 +43,10 @@
     <div class="extra-info-container-small">
       <div class="extra-info-headline">
         <span nz-icon nzType="clock-circle" nzTheme="fill"></span>
-        <h5>{{searchResult.type === 'Handwerksbetrieb' ? ('profileCard.profileOpeningTimes' | translate) : ('profileCard.profileNextEvent' | translate)}}</h5>
+        <h5>{{searchResult.type !== 'Reparaturcafé' ? ('profileCard.profileOpeningTimes' | translate) : ('profileCard.profileNextEvent' | translate)}}</h5>
       </div>
       <div class="extra-info-content">
-        <p>{{searchResult.type === 'Handwerksbetrieb' ? searchResult.openingHours : formatDateIfNeeded(searchResult.nextEvent ?? '')}}</p>
+        <p>{{searchResult.type !== 'Reparaturcafé' ? searchResult.openingHours : formatDateIfNeeded(searchResult.nextEvent ?? '')}}</p>
       </div>
     </div>
   </div>

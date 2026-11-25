@@ -7,7 +7,7 @@ import {
 } from '../../api/services'; // Import RepairService
 import { Reparaturbetrieb, Reparaturcafe } from '../../api/models';
 import 'leaflet.markercluster';
-import { IMarkerInfo, MarkerTypes } from '../../interfaces/imarker-info';
+import { IMarkerInfo, MarkerTypes, getBetriebMarkerType } from '../../interfaces/imarker-info';
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
 import { AllImportsModule } from '../../all-imports.module';
 import { SharedService } from '../../services/shared.service';
@@ -50,6 +50,7 @@ export class MapComponent implements OnInit {
     title: "",
   })
   clickedBeforeType: MarkerTypes = MarkerTypes.Both
+  private markerTypes = new Map<Marker, MarkerTypes>();
   clickedElementIdDesktop: string = ""
   clickedElementId: string = ""
   touch: string = '';
@@ -128,21 +129,25 @@ export class MapComponent implements OnInit {
       iconCreateFunction: (cluster) => {
         const allChildMarkers = cluster.getAllChildMarkers();
 
-        const cafes = allChildMarkers.some((x) =>
-          this.markerInfo.reparaturcafes.map((x) => x.marker).includes(x)
-        );
-        const betriebe = allChildMarkers.some((x) =>
-          this.markerInfo.reparaturbetriebe.map((x) => x.marker).includes(x)
-        );
+        const childTypes = allChildMarkers.map((x) => this.markerTypes.get(x));
+        const cafes = childTypes.includes(MarkerTypes.Reparaturcafe);
+        const betriebe = childTypes.includes(MarkerTypes.Reparaturbetrieb);
+        const gewerbe = childTypes.includes(MarkerTypes.Gewerbebetrieb);
 
         let className = '';
 
-        if (cafes && betriebe) {
+        if (betriebe && cafes) {
           className = 'cluster-icon-both';
+        } else if (betriebe && gewerbe) {
+          className = 'cluster-icon-betriebe-gewerbe';
+        } else if (gewerbe && cafes) {
+          className = 'cluster-icon-gewerbe-cafes';
         } else if (cafes) {
           className = 'cluster-icon-cafes';
         } else if (betriebe) {
           className = 'cluster-icon-betriebe';
+        } else if (gewerbe) {
+          className = 'cluster-icon-gewerbe';
         }
 
         const dimsOfCluster = Math.log(allChildMarkers.length * 1000) * 5;
@@ -216,6 +221,7 @@ export class MapComponent implements OnInit {
     this.markersLayer.clearLayers();
     this.markerInfo.reparaturbetriebe = [];
     this.markerInfo.reparaturcafes = [];
+    this.markerTypes.clear();
     this.clickedBefore = new Leaflet.Marker([0, 0], {
       icon: new Leaflet.Icon({
         iconSize: [24, 24],
@@ -257,7 +263,7 @@ export class MapComponent implements OnInit {
           betrieb.MapLocation.lat,
           betrieb.MapLocation.lng,
           betrieb.Name ?? 'Default Name',
-          MarkerTypes.Reparaturbetrieb,
+          getBetriebMarkerType(betrieb),
           bounds
         );
       }
@@ -308,7 +314,7 @@ export class MapComponent implements OnInit {
       cafebetriebe.reparaturbetriebe.map((x) => {
         let displayableResult = {
           id: x?.internal_id ?? '',
-          type: MarkerTypes.Reparaturbetrieb,
+          type: getBetriebMarkerType(x),
           title: x?.Name ?? 'Kein Name angegeben',
           description: x?.Description ?? '',
           street: x?.Address ?? 'Keine Straße angegeben',
@@ -353,12 +359,31 @@ export class MapComponent implements OnInit {
     marker.setIcon(icon({
       iconSize: [24, 24],
       iconAnchor: [12, 12],
-      iconUrl:
-        this.clickedBeforeType === MarkerTypes.Reparaturcafe
-          ? 'assets/map-icons/marker-cafe.svg'
-          : 'assets/map-icons/marker-betrieb.svg',
+      iconUrl: this.getMarkerIconUrl(this.clickedBeforeType),
     }))
     this.markersLayer.addLayer(marker);
+  }
+
+  private getMarkerIconUrl(type: MarkerTypes): string {
+    switch (type) {
+      case MarkerTypes.Reparaturcafe:
+        return 'assets/map-icons/marker-cafe.svg';
+      case MarkerTypes.Gewerbebetrieb:
+        return 'assets/map-icons/marker-gewerbe.svg';
+      default:
+        return 'assets/map-icons/marker-betrieb.svg';
+    }
+  }
+
+  private getPinIconUrl(type: MarkerTypes): string {
+    switch (type) {
+      case MarkerTypes.Reparaturcafe:
+        return 'assets/map-icons/Standortpin_orange.svg';
+      case MarkerTypes.Gewerbebetrieb:
+        return 'assets/map-icons/Standortpin_pink.svg';
+      default:
+        return 'assets/map-icons/Standortpin_lila.svg';
+    }
   }
 
 
@@ -374,10 +399,7 @@ export class MapComponent implements OnInit {
       icon: new Leaflet.Icon({
         iconSize: [24, 24],
         iconAnchor: [12, 12],
-        iconUrl:
-          type === MarkerTypes.Reparaturcafe
-            ? 'assets/map-icons/marker-cafe.svg'
-            : 'assets/map-icons/marker-betrieb.svg',
+        iconUrl: this.getMarkerIconUrl(type),
       }),
       title: title,
     });
@@ -389,10 +411,7 @@ export class MapComponent implements OnInit {
         marker.setIcon(icon({
           iconSize: [40, 45],
           iconAnchor: [20, 20],
-          iconUrl:
-            type === MarkerTypes.Reparaturcafe
-              ? 'assets/map-icons/Standortpin_orange.svg'
-              : 'assets/map-icons/Standortpin_lila.svg',
+          iconUrl: this.getPinIconUrl(type),
           className: "pin"
         })
         )
@@ -477,6 +496,7 @@ export class MapComponent implements OnInit {
         betrieb: entity,
       });
     }
+    this.markerTypes.set(marker, type);
 
     this.markersLayer.addLayer(marker);
   }
