@@ -143,23 +143,17 @@
         background-color: @orange;
       }
 
-      &.cluster-icon-both {
-        background-color: @dark-purple;
-        border: 4px solid @orange;
-      }
-
       &.cluster-icon-gewerbe {
         background-color: @pink;
       }
 
-      &.cluster-icon-betriebe-gewerbe {
-        background-color: @dark-purple;
-        border: 4px solid @pink;
+      &.cluster-ring-cafes {
+        border: 4px solid @orange;
       }
 
-      &.cluster-icon-gewerbe-cafes {
-        background-color: @pink;
-        border: 4px solid @orange;
+      // Drawn outside the border so it stacks as an additional ring.
+      &.cluster-ring-gewerbe {
+        box-shadow: 0 0 0 2px @white, 0 0 0 6px @pink;
       }
 
       div {

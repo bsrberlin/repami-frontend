@@ -134,21 +134,24 @@ export class MapComponent implements OnInit {
         const betriebe = childTypes.includes(MarkerTypes.Reparaturbetrieb);
         const gewerbe = childTypes.includes(MarkerTypes.Gewerbebetrieb);
 
-        let className = '';
+        // Fill: dominant type; inner ring: cafés mixed with Handwerksbetriebe;
+        // outer ring: Reparaturbetriebe mixed with any other type.
+        const classNames: string[] = [];
 
-        if (betriebe && cafes) {
-          className = 'cluster-icon-both';
-        } else if (betriebe && gewerbe) {
-          className = 'cluster-icon-betriebe-gewerbe';
-        } else if (gewerbe && cafes) {
-          className = 'cluster-icon-gewerbe-cafes';
+        if (betriebe) {
+          classNames.push('cluster-icon-betriebe');
         } else if (cafes) {
-          className = 'cluster-icon-cafes';
-        } else if (betriebe) {
-          className = 'cluster-icon-betriebe';
+          classNames.push('cluster-icon-cafes');
         } else if (gewerbe) {
-          className = 'cluster-icon-gewerbe';
+          classNames.push('cluster-icon-gewerbe');
         }
+        if (betriebe && cafes) {
+          classNames.push('cluster-ring-cafes');
+        }
+        if (gewerbe && (betriebe || cafes)) {
+          classNames.push('cluster-ring-gewerbe');
+        }
+        const className = classNames.join(' ');
 
         const dimsOfCluster = Math.log(allChildMarkers.length * 1000) * 5;
 
